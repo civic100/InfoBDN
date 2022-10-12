@@ -1,0 +1,46 @@
+  /*
+  *
+  Estilo del contenedor central
+  *
+  */
+.contenedor-central{
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 260px;
+    margin-bottom: 50px;
+    padding:10px 10px;
+ 
+}
+h3{
+    width:30%;
+    max-width:300px;
+    padding:30px 10px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+}
+
+a:hover {
+    color:#F0BD83;
+}
+
+a{
+    text-decoration: none;
+    color: #000000;
+}
+/*
+*
+Imagen de fondo
+*
+*/
+
+.imagen-login{
+    background-image: url("Fondo-Admin-Login.jpg");
+    margin-top: -413px;
+    height: 640px;
+  }
+  
+  
+  
+ 

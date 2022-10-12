@@ -1,0 +1,93 @@
+/*
+*
+Fondo del titulo del profesor
+*
+*/
+
+.Fondo-Profesor{
+    background-color: #F2F4FA;
+    width: 30%;
+    height: 300px;
+    text-align: center;
+    padding: 28px;
+    padding: 28px;
+    margin: -150px auto;
+  }
+  
+/*
+*
+Estilo del contenedor Profesor
+*
+*/
+
+.Texto-Profesor{
+    font-size: 16px;
+}
+
+.Titulo-Profesor{
+    margin-bottom: 20px;
+}
+
+/*
+*
+Estilo del contenedor central
+*
+*/
+.contenedor-central{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.linea-central{
+  border-bottom: 1px solid #000000;
+  margin-top: -88px;
+
+}
+
+h3{
+    width:30%;
+    max-width:300px;
+    padding:10px 10px;
+    text-align: center;
+    background-color: #F2F4FA;
+    margin-top: 150px;
+}
+
+.imagen-Profe{
+    background-image: url("FondoProfesores-Cursos.jpg");
+    height: 430px;
+  }
+
+/*
+*
+Estilo del contenedor de los profesores
+*
+*/
+.box{
+  margin-top: 70px;
+  margin-bottom: 50px;;
+  display: grid;
+  grid-template-columns: 20% 20% 15% 15% 15% 20%;
+  grid-auto-rows: minmax(200px, auto);
+  align-items:center;
+  justify-content:center;  
+}
+
+.box table:nth-child(even){
+grid-column: 2/3;
+}
+.box table:nth-child(odd){
+grid-column: 4/5;
+}
+
+
+table,td,th{
+  border-spacing: 2ch;
+  text-align: center;
+  width: 50%;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+
+}
+
