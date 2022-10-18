@@ -114,7 +114,9 @@ session_start();
                                     <select name='select1' id = 'select1'>"
                                 <?php
                                     while($fila=mysqli_fetch_array($consulta)){
-                                        echo "<option value='".$fila['dni']."'>".$fila['nombre']."</option>";
+                                        if ($fila['activo']== 1){
+                                            echo "<option value='".$fila['dni']."'>".$fila['nombre']."</option>";
+                                        }
                                     }
                                 ?> 
                                     </select>

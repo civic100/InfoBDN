@@ -59,7 +59,7 @@ include("Funciones.php");
                 <form name="formulariAdmin" method="POST" action="LoginAdmin.php" >
 
                         <label for="usuari"> Usuari *   </label >
-                            <input type="text"  name="usuari" maxlength="15" id = "usuari" required/><br>
+                            <input type="text"  name="usuari" maxlength="9" id = "usuari" required/><br>
                 
                         <label for="Password"> Password * </label >
                             <input type="password"  maxlength="15" id = "Password" name="Password" required /><br>

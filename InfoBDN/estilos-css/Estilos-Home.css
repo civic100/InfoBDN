@@ -62,7 +62,8 @@ Estilo del contenedor de los cursos
 
 
 .tabla{
-  width: 80%;
+  width: 100%;
+ 
 }
 
 table,td,th{

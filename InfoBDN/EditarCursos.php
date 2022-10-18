@@ -37,23 +37,30 @@ include("Funciones.php");
         $fechafin = $_POST['datafi'];
         $profesor = $_POST['select1'];
         $codigo = $_POST['codigo'];
-
-
-        //Y creamos la variable sesión de la clave primaria que será el correo
-        //Realizamos la conexión a la bbdd 
-    
-        //Comprobamos que se ha realizado bien.
-        if($conexion == false){
-            mysqli_connect_errno();
-        }
-        //Si la conexión es correcto ejecutamos esta parte de código
-        else{
-            EditarCurso ($id, $conexion, $codigo, $NombreCurso, $Descripcion, $duracion, $fechaincio, $fechafin ,$profesor);
-        }   
+        $fecha1=strtotime($fechaincio);
+        $fecha2=strtotime($fechafin);
+        if($fecha1 < $fecha2){
+            //Y creamos la variable sesión de la clave primaria que será el correo
+            //Realizamos la conexión a la bbdd 
+        
+            //Comprobamos que se ha realizado bien.
+            if($conexion == false){
+                mysqli_connect_errno();
+            }
+            //Si la conexión es correcto ejecutamos esta parte de código
+            else{
+                EditarCurso ($id, $conexion, $codigo, $NombreCurso, $Descripcion, $duracion, $fechaincio, $fechafin ,$profesor);
+        }  
+        }else{
+            echo "La fecha final no puede ser menor a la fecha de inicio"
+            ?>
+                <META HTTP-EQUIV="REFRESH" CONTENT="3;URL=CursosAdmin.php"/>
+            <?php 
+        } 
         }else{
             $sql = "SELECT * FROM cursos WHERE codigo = '$id'";
             $result=mysqli_query($conexion, $sql);
-
+        
             while ($row=mysqli_fetch_array($result)){
                 ?>
                 <div class="Contenedor-Tabla">
@@ -82,12 +89,13 @@ include("Funciones.php");
                             <label for="datainici">
                             Data de inici del Curso:
                             </label >
-                                <input type="date"  maxlength="15" id = "datainici" name="datainici" required value=" <?php echo $row['fechainicio'];?>" /><br>
+                                <input type="date"  id = "datainici" name="datainici" required value=" <?php echo $row['fechainicio'];?>" /><br>
 
                             <label for="datafi">
                             Data de fi del Curso:
+                          
                             </label >
-                                <input type="date"  maxlength="15" id = "datafi" name="datafi" required value=" <?php echo $row['fechafinal'];?>" /><br>
+                                <input type="date"  id = "datafi" name="datafi" required value=" <?php echo $row['fechafinal'];?>" /><br>
                     
                             <label for="profesor">
                             Nombre del Profesor:
@@ -108,7 +116,9 @@ include("Funciones.php");
                                             <select name='select1' id = 'select1'>
                                         <?php
                                             while($fila=mysqli_fetch_array($consulta)){
-                                                echo "<option value='".$fila['dni']."'>".$fila['nombre']."</option>";
+                                                if ($fila['activo']== 1){
+                                                    echo "<option value='".$fila['dni']."'>".$fila['nombre']."</option>";
+                                                }
                                             }
                                         ?> 
                                             </select>

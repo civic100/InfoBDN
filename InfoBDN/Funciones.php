@@ -348,9 +348,9 @@ function EditarProfesor($conexion,$DniProfesor,$NombreProfe,$ApellidoProfe,$Titu
 Validar LoginAlumnos/LoginProfesores.
 *
 */
-function ValidarLogin($conexion,$dni,$pas){
+function ValidarLogin($conexion,$dni,$pasencript){
     //En la siguente consulta comprobamos los datos introducidos en la bbdd.
-    $sql = "SELECT * FROM alumnos WHERE dni = '$dni' AND contraseña = '$pas'";
+    $sql = "SELECT * FROM alumnos WHERE dni = '$dni' AND contraseña = '$pasencript'";
     $consulta = mysqli_query($conexion, $sql);
     
     //si son correctos ejecuta esta parte del código
@@ -366,7 +366,7 @@ function ValidarLogin($conexion,$dni,$pas){
         <?php
     //si no son correctos ejecuta esta parte del código y asi comprarlo en la tabla profesores.
     }else{   
-        $sql2 = "SELECT * FROM profesores WHERE dni = '$dni' AND contraseña = '$pas'";
+        $sql2 = "SELECT * FROM profesores WHERE dni = '$dni' AND contraseña = '$pasencript'";
         $consulta2 = mysqli_query($conexion, $sql2);
         if(mysqli_num_rows($consulta2)>0){
             //una vez validado generamos la sesion.
@@ -489,13 +489,13 @@ Tabla de todos los cursos.
 */
 function  GenerarTablaCursosHomeAll($consulta){
     //Mostramos la tabla con los empleados actuales
-   
+        $fechaActual = date('Y-m-d');
         foreach($consulta as $persona => $campo){
             //Saber la fecha actual
             echo "<div class='tabla'>";
             echo"<table>";
             echo "<tr>";
-                if($campo['activo']=='1'){
+               if($fechaActual < $campo['fechainicio']){
                   
                     //Imprimimos los profesores activos.
                         echo "<td> <img width='100' height='100' src=".$campo['foto']."></td>";
@@ -532,14 +532,26 @@ Dar Alta Cursos matricula
 *
 */
 function  DarAltaCurso($idAlumno,$idCurso,$conexion){
-   
-    //Actualizamos el valor del campo activo de la base de datos a 1.
-    $sql = "INSERT matricula (dni_alumno, curso) VALUES ('$idAlumno','$idCurso')";
-    if (mysqli_query($conexion, $sql)) {
-        echo "Te has inscrito al curso.";
-        //una vez validado generamos la sesion.
-    } else {
-        mysqli_connect_errno();
+
+    $sql = "SELECT * FROM matricula WHERE dni_alumno = '$idAlumno' AND  curso ='$idCurso'"; 
+
+    $consulta = mysqli_query($conexion, $sql);
+
+    //Comprobamos si el curso ya está en la base de datos, en caso de que este ejecutamos el código dentro del if.
+    if(mysqli_num_rows($consulta)>0){
+        echo "Ya estas inscrito en el curso.";
+        ?>
+            <META HTTP-EQUIV="REFRESH" CONTENT="2;URL=Home.php"/>
+        <?php  
+    //Si es un nuevo curso ejecutamos esta parte del código.         
+    }else{
+        $sql2 = "INSERT matricula (dni_alumno, curso) VALUES ('$idAlumno','$idCurso')";
+        if (mysqli_query($conexion, $sql2)) {
+            echo "Te has inscrito al curso.";
+            //una vez validado generamos la sesion.
+        } else {
+            mysqli_connect_errno();
+        }
     }
 }
 
@@ -588,7 +600,7 @@ function  GenerarTablaMisCursos($conexion,$consulta){
             $idcurso=$campo['curso'];
             $sql="SELECT nombre FROM cursos WHERE codigo = $idcurso ";
             $consulta = mysqli_query($conexion, $sql);
-              
+            $fechaActual = date('Y-m-d'); 
             while($fila=mysqli_fetch_array($consulta)){
                 echo "<td>" .$fila['nombre'] ."</td>";
             }
@@ -599,7 +611,7 @@ function  GenerarTablaMisCursos($conexion,$consulta){
                 echo "<td>".$campo['nota']. "</td>";
             }
       
-            if($campo['activo']=='1'  && $campo['nota'] == 0){
+            if($campo['activo']=='1'  &&  $campo['nota'] == 0 ){
                 echo "<td> <a href=DarbajaCursoUsu.php?CodigoCurso=$idcurso>Desmatricular</a></td>";
             }else{
                 echo "<td> Curso Finalizado </td>";
@@ -654,7 +666,7 @@ function AddNota ($conexion, $dnialumno,$curso, $nota){
 
     $sql = "UPDATE matricula SET nota = '$nota'  WHERE dni_alumno = '$dnialumno' AND curso = '$curso'";
     if (mysqli_query($conexion, $sql)) {
-        echo $sql;
+    
         ?>
             <META HTTP-EQUIV="REFRESH" CONTENT="2;URL=EvaluacionesAlumnos.php"/>
         <?php
