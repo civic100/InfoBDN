@@ -1,8 +1,6 @@
 <?php
 session_start();
-?>
 
-<?php
 if(!empty ($_SESSION['dni'])){
     session_destroy(); //Se destruye la sesión creada
     ?>

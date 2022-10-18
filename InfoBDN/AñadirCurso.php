@@ -35,33 +35,35 @@ session_start();
                 $profesor = $_POST['select1'];
                 $fecha1=strtotime($fechaincio);
                 $fecha2=strtotime($fechafin);
-                if($fecha1 < $fecha2){
-                    if (is_uploaded_file ($_FILES['imagen']['tmp_name'])){
-                        $nombreDirectorio = "img/";
-                        $idUnico = time();
-                        $nombreFichero = $idUnico . "-" .
-                        $_FILES['imagen']['name'];
-                        $directorio= $nombreDirectorio . $nombreFichero;
-                        move_uploaded_file ($_FILES['imagen']['tmp_name'], $nombreDirectorio . $nombreFichero);
-                        $tamano = $_FILES['imagen']['size'];
-                        $tipo = $_FILES['imagen']['type'];
-                    }
+                $fechaActual = date('Y-m-d');
+                if($fechaincio> $fechaActual){
+                    if($fecha1 < $fecha2){
+                        if (is_uploaded_file ($_FILES['imagen']['tmp_name'])){
+                            $nombreDirectorio = "img/";
+                            $idUnico = time();
+                            $nombreFichero = $idUnico . "-" .
+                            $_FILES['imagen']['name'];
+                            $directorio= $nombreDirectorio . $nombreFichero;
+                            move_uploaded_file ($_FILES['imagen']['tmp_name'], $nombreDirectorio . $nombreFichero);
+                            $tamano = $_FILES['imagen']['size'];
+                            $tipo = $_FILES['imagen']['type'];
+                        }
 
-                    //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
-                    if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")) && ($tamano < 2000000))) {
-                        echo '<div><b>Error. La extensión o el tamaño de los archivos no es correcta.<br/> - Se permiten archivos .gif, .jpg, .png. y de 200 kb como máximo.</b></div>';
-                        ?>
-                            <META HTTP-EQUIV="REFRESH" CONTENT="3;URL=AñadirCurso.php"/>
-                        <?php 
-                    }else{
-                        $conexion=ConecxionBBDD ();
-                        if($conexion == false){
-                            mysqli_connect_errno();
+                        //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
+                        if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")) && ($tamano < 2000000))) {
+                            echo '<div><b>Error. La extensión o el tamaño de los archivos no es correcta.<br/> - Se permiten archivos .gif, .jpg, .png. y de 200 kb como máximo.</b></div>';
+                            ?>
+                                <META HTTP-EQUIV="REFRESH" CONTENT="3;URL=AñadirCurso.php"/>
+                            <?php 
                         }else{
-                            AñadirCurso($conexion,$NombreCurso,$Descripcion,$duracion,$fechaincio, $fechafin ,$profesor, $directorio); 
-                        }   
+                            $conexion=ConecxionBBDD ();
+                            if($conexion == false){
+                                mysqli_connect_errno();
+                            }else{
+                                AñadirCurso($conexion,$NombreCurso,$Descripcion,$duracion,$fechaincio, $fechafin ,$profesor, $directorio); 
+                            }   
+                        }
                     }
-
                 }else{
                     echo "La fecha final no puede ser menor a la fecha de inicio"
                     ?>

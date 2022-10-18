@@ -39,18 +39,17 @@ include("Funciones.php");
         $codigo = $_POST['codigo'];
         $fecha1=strtotime($fechaincio);
         $fecha2=strtotime($fechafin);
-        if($fecha1 < $fecha2){
-            //Y creamos la variable sesión de la clave primaria que será el correo
-            //Realizamos la conexión a la bbdd 
         
-            //Comprobamos que se ha realizado bien.
+        if($fecha1 < $fecha2){
+
             if($conexion == false){
                 mysqli_connect_errno();
             }
-            //Si la conexión es correcto ejecutamos esta parte de código
+                    //Si la conexión es correcto ejecutamos esta parte de código
             else{
                 EditarCurso ($id, $conexion, $codigo, $NombreCurso, $Descripcion, $duracion, $fechaincio, $fechafin ,$profesor);
-        }  
+            }  
+            
         }else{
             echo "La fecha final no puede ser menor a la fecha de inicio"
             ?>
@@ -89,13 +88,12 @@ include("Funciones.php");
                             <label for="datainici">
                             Data de inici del Curso:
                             </label >
-                                <input type="date"  id = "datainici" name="datainici" required value=" <?php echo $row['fechainicio'];?>" /><br>
+                                <input type="date"  id = "datainici" name="datainici" required value= <?php echo $row['fechainicio'];?> /><br>
 
                             <label for="datafi">
                             Data de fi del Curso:
-                          
                             </label >
-                                <input type="date"  id = "datafi" name="datafi" required value=" <?php echo $row['fechafinal'];?>" /><br>
+                                <input type="date"  id = "datafi" name="datafi" required value= <?php  echo $row['fechafinal'];?> /><br>
                     
                             <label for="profesor">
                             Nombre del Profesor:
