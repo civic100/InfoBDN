@@ -35,6 +35,7 @@ include("Funciones.php");
                 //Guardamos las variables email y password para posteriormente enviarlas. 
                 $usuario = $_POST['usuari'];
                 $pas = $_POST['Password'];
+                $pasencript=md5($pas);
                 //Y creamos la variable sesión de la clave primaria que será el correo
                 $_SESSION['admin'] = $usuario;
 
@@ -46,7 +47,7 @@ include("Funciones.php");
                 }
                 //Si la conexión es correcto ejecutamos esta parte de código
                 else{
-                    ValidarLoginAdmin($conexion,$usuario,$pas);
+                    ValidarLoginAdmin($conexion,$usuario,$pasencript);
                 }   
             }else{
             /*

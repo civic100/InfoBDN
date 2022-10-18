@@ -62,7 +62,7 @@ include("Funciones.php");
                 </label >
                 <input type="password"  maxlength="15" id = "Password" name="Password" required /><br>
                 <!--Si el usuario no está registrado mostramos el enlace que le lleva a la página de registro -->
-                <input type="submit" name="subir" value="Aceptar"/><br>
+                <button type="submit" name="subir" value="Enviar">Enviar</button><br>
 
                 <a href='RegistroUsuarios.php'>Encara no estàs registrat</a>
         </form>

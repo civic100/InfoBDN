@@ -7,7 +7,7 @@ Fondo del titulo del profesor
 
 .Fondo-Profesor{
     background-color: #F2F4FA;
-    width: 30%;
+    width: 45%;
     height: 300px;
     text-align: center;
     padding: 28px;
@@ -42,7 +42,7 @@ Estilo del contenedor central
 }
 .linea-central{
   border-bottom: 1px solid #000000;
-  margin-top: -88px;
+  margin-top: -75px;
 
 }
 
@@ -66,21 +66,14 @@ Estilo del contenedor de los profesores
 *
 */
 .box{
-      margin-top: 150px;
-      margin-bottom: 100px;;
-      display: grid;
-      grid-template-columns: 20% 20% 15% 10% 15% 20%;
-      align-items:center;
-      justify-content:center;  
+  margin: 0 auto;
+  width: 40%;
+  display: grid;
+  grid-template-columns: repeat(2,47%);
+  text-align: center;
 
 }
 
-.box table:nth-child(even){
-    grid-column: 3/7;
-}
-.box table:nth-child(odd){
-  grid-column: 4/7;
-}
 /*
 *
 Estilos Buscador

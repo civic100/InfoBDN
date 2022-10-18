@@ -97,7 +97,7 @@ button{
 .imagen-login{
     background-image: url("FondoSesion.jpg");
     background-repeat: no-repeat; 
-    margin-left: 150px;
+    margin-left: -190px;
     margin-top: -248px;
     height: 720px;
    

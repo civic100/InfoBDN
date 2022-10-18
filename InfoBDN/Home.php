@@ -49,7 +49,7 @@ include("Funciones.php");
                     }
                     else{
                         //Realizamos la consulta a la bbdd para mostrar todos los datos de la tabla empleados
-                        $sql = "SELECT * FROM cursos";
+                        $sql = "SELECT * FROM cursos where fechainicio > curdate() ";
                         $consulta = mysqli_query($conexion, $sql);
 
                         if ($consulta== false){
@@ -63,4 +63,7 @@ include("Funciones.php");
             </div>
         </div>
     </body>
+    <footer>
+     
+    </footer>
 </html>

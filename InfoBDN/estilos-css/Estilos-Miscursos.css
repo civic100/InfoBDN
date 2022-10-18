@@ -7,7 +7,7 @@ Estilo del contenedor central
 .contenedor-central{
     display: flex;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-bottom: 65px;
 }
 .linea-central{
   border-bottom: 1px solid #000000;
@@ -65,4 +65,21 @@ Estilos Buscador
     color: #000000;
     padding-left: 45px;
     border-radius: 5px;
+}
+
+.Contenedor-cursos{
+    margin-top: 70px;
+    margin-bottom: 50px;;
+    display: grid;
+    grid-template-columns: 20% 20% 15% 15% 15% 20%;
+    grid-auto-rows: minmax(200px, auto);
+    align-items:center;
+    justify-content:center;  
+}
+
+.Contenedor-cursos a:nth-child(even){
+  grid-column: 3/4;
+}
+.Contenedor-cursos a:nth-child(odd){
+grid-column: 4/5;
 }

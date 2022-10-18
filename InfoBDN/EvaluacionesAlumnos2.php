@@ -24,6 +24,7 @@ include("Funciones.php");
         <?php
        if(!empty ($_SESSION['dniprofesor']))  {
             $id=$_SESSION['dniprofesor'];
+            $idcurso = $_GET["Codigocurso"]; 
         ?>
         <div class="imagen-Profe"><br></div>
 
@@ -32,22 +33,27 @@ include("Funciones.php");
         </div>
         <div class="linea-central"></div>
 
-        <div class="Contenedor-cursos">
+        <div class="Contenedor-Tabla">
                 <?php
+                //Realizamos la conexión a la bbdd 
                 $conexion=ConecxionBBDD ();
                 if($conexion == false){
                     mysqli_connect_errno();
                 }
                 else{
                     //Realizamos la consulta a la bbdd para mostrar todos los datos de la tabla empleados
-                    $sql = "SELECT * FROM cursos WHERE profesor= '$id'";
+                 
+                    $sql = "SELECT cursos.nombre,cursos.codigo,matricula.dni_alumno ,matricula.nota,cursos.fechafinal FROM cursos INNER JOIN matricula ON cursos.codigo=matricula.curso where cursos.profesor='$id' and cursos.codigo=' $idcurso'";
                     $consulta = mysqli_query($conexion, $sql);
 
-                    if ($consulta == false){
+                    if ($consulta== false){
                         mysqli_error($conexion); 
                     }
                     else{
-                        generarTablaEvaluaciones($consulta);
+                        ?>
+                        <a href='EvaluacionesAlumnos.php'> <-- </a></br>
+                        <?php
+                        GenerarTablaEvaluacionesProfesor($consulta);
                     }
                 }
             ?>

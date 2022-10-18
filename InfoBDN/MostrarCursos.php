@@ -34,7 +34,13 @@ include("Funciones.php");
         </div>
         <div class="linea-central"></div>
 
-        <div class="Contenedor-Profesores">
+        <div class="buscador">
+            <div class="container-1">
+                <input type="search" id="search" placeholder="Buscador..." />
+            </div>
+        </div>
+
+        <div class="Contenedor-Cursos">
             <div class="box">
                 <?php
                     //Realizamos la conexión a la bbdd 

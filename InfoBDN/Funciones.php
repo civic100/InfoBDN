@@ -73,17 +73,15 @@ function  Generarmenu(){
     <?php
     }
 }
-?>
 
 
-<?php
 /*
 *
 Conexión a la base de datos.
 *
 */
 function ConecxionBBDD (){
-     $conexion = mysqli_connect("localhost","root","root","infobdn");
+     $conexion = mysqli_connect("localhost","root","","infobdn");
     return $conexion; 
 }
 
@@ -92,9 +90,9 @@ function ConecxionBBDD (){
 Validar el inicio de sesión del usuario Admin.
 *
 */
-function ValidarLoginAdmin($conexion,$dni,$pas){
+function ValidarLoginAdmin($conexion,$dni,$pasencript){
     //En la siguiente consulta comprobamos los datos introducidos en la bbdd del usuario Admin.
-    $sql = "SELECT * FROM administrador WHERE dni = '$dni' AND contraseña = '$pas'";
+    $sql = "SELECT * FROM administrador WHERE dni = '$dni' AND contraseña = '$pasencript'";
     $consulta = mysqli_query($conexion, $sql);
 
     //Si son correctos ejecuta esta parte de código redireccionado a la página de edición del Admin.
@@ -442,7 +440,7 @@ function generarTablaProfesores2($consulta){
         echo "<tr>";
         if($campo['activo']=='1'){
             //Imprimimos los profesores activos.
-            echo "<td> <img width='100' height='100' src=". $campo['foto'].">" ."<br>".$campo['nombre'] ."<br>".$campo['apellido']."</td>";
+            echo "<td> <img width='200' height='200' src=". $campo['foto'].">" ."<br>".$campo['nombre'] ."<br>".$campo['apellido']."</td>";
             /*echo "<td>" .$campo['nombre'] ."</td>";
             echo "<td>". $campo['apellido']. "</td>";*/
         }
@@ -459,28 +457,29 @@ Tabla de los cursos activos.
 */
 function  GenerarTablaCursosHomeActivos($consulta){
     //Mostramos la tabla con los empleados actuales
-   
+    
         foreach($consulta as $persona => $campo){
+            echo "<div class='tabla'>";
             echo"<table>";
             echo "<tr>";
             //Saber la fecha actual
-            $fechaActual = date('Y-m-d');
-            if($fechaActual <  $campo['fechainicio']){
 
-                if($campo['activo']=='1'){
-                    //Imprimimos los profesores activos.
-                        echo "<td> <img width='100' height='100' src=".$campo['foto']."></td>";
-                        echo "<td>". $campo['descripcion']. "</br>"."</td>";
-                        echo "<th>Incio: </th>" . "<td>". $campo['fechainicio']."</br>". "</td>";
-                        echo "<th>Fin: </th>" . "<td>". $campo['fechafinal']."</br>". "</td>";
-                        $CodiCurso=$campo["codigo"];
+            if($campo['activo']=='1'){
+                //Imprimimos los profesores activos.
+                    echo "<td> <img width='100' height='100' src=".$campo['foto']."></td>";
+                    echo "<td>". $campo['descripcion']. "</br>"."</td>";
+                    echo "<th>Incio: </th>" . "<td>". $campo['fechainicio']."</br>". "</td>";
+                    echo "<th>Fin: </th>" . "<td>". $campo['fechafinal']."</br>". "</td>";
+                    $CodiCurso=$campo["codigo"];
                      
-                        echo "<td> <a href=DarAltaCursoUsu.php?CodigoCurso=$CodiCurso>Darme de alta</a></td>";
-                }
+                    echo "<td> <a href=DarAltaCursoUsu.php?CodigoCurso=$CodiCurso>Darme de alta</a></td>";
             }
-        }
-        echo "</tr>";
-        echo"</table>";   
+            echo "</tr>";
+            echo"</table>";   
+            echo "</div>";
+    }
+    
+   
     
 }
 /*
@@ -492,13 +491,12 @@ function  GenerarTablaCursosHomeAll($consulta){
     //Mostramos la tabla con los empleados actuales
    
         foreach($consulta as $persona => $campo){
+            //Saber la fecha actual
+            echo "<div class='tabla'>";
             echo"<table>";
             echo "<tr>";
-            //Saber la fecha actual
-            $fechaActual = date('Y-m-d');
-            if($fechaActual <  $campo['fechainicio']){
-
                 if($campo['activo']=='1'){
+                  
                     //Imprimimos los profesores activos.
                         echo "<td> <img width='100' height='100' src=".$campo['foto']."></td>";
                         echo "<td>". $campo['descripcion']. "</br>"."</td>";
@@ -515,10 +513,12 @@ function  GenerarTablaCursosHomeAll($consulta){
 
                     echo "<td>El curso ya ha empezado </td>";
                 }
-            }
+            echo "</tr>";
+            echo"</table>";   
+            echo "</div>";
+            
         }
-        echo "</tr>";
-        echo"</table>";   
+       
     
 }
 
@@ -534,7 +534,7 @@ Dar Alta Cursos matricula
 function  DarAltaCurso($idAlumno,$idCurso,$conexion){
    
     //Actualizamos el valor del campo activo de la base de datos a 1.
-    $sql = "INSERT matricula (dni_alumno, curso, nota) VALUES ('$idAlumno','$idCurso','')";
+    $sql = "INSERT matricula (dni_alumno, curso) VALUES ('$idAlumno','$idCurso')";
     if (mysqli_query($conexion, $sql)) {
         echo "Te has inscrito al curso.";
         //una vez validado generamos la sesion.
@@ -621,7 +621,6 @@ function GenerarTablaEvaluacionesProfesor($consulta){
     foreach($consulta as $persona => $campo){
         //Saber la fecha actual
         $fechaActual = date('Y-m-d');
-
             echo"<table>";
             echo "<tr>";
             echo"<th>Curso</th>";
@@ -679,3 +678,19 @@ function EditarPerfilAlumno($conexion,$Dni,$Nombre,$Apellido,$Edad){
     } else { mysqli_connect_errno(); }
     mysqli_close($conexion);
 }
+
+/*
+*
+Tabla Cursos Profesor Evaluacion.
+*
+*/
+function  generarTablaEvaluaciones($consulta){
+    
+    foreach($consulta as $persona => $campo){
+        $Codicurso=$campo["codigo"];
+        
+        echo " <a href=EvaluacionesAlumnos2.php?Codigocurso=$Codicurso> <img width='100' height='100' src=".$campo['foto']."> </a>";
+
+    }
+}
+

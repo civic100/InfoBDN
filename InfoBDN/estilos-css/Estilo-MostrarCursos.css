@@ -6,7 +6,7 @@ Fondo del titulo del profesor
 
 .Fondo-Profesor{
     background-color: #F2F4FA;
-    width: 30%;
+    width: 45%;
     height: 300px;
     text-align: center;
     padding: 28px;
@@ -41,7 +41,7 @@ Estilo del contenedor central
 }
 .linea-central{
   border-bottom: 1px solid #000000;
-  margin-top: -88px;
+  margin-top: -75px;
 
 }
 
@@ -64,30 +64,54 @@ h3{
 Estilo del contenedor de los profesores
 *
 */
+
+.Contenedor-Cursos{
+margin-top:50px;
+}
 .box{
-  margin-top: 70px;
-  margin-bottom: 50px;;
+  margin: 0 auto;
+  width: 90%;
   display: grid;
-  grid-template-columns: 20% 20% 15% 15% 15% 20%;
-  grid-auto-rows: minmax(200px, auto);
-  align-items:center;
-  justify-content:center;  
+  grid-template-columns: repeat(2,50%);
+ 
 }
 
-.box table:nth-child(even){
-grid-column: 2/3;
-}
-.box table:nth-child(odd){
-grid-column: 4/5;
+
+.tabla{
+  width: 80%;
+
 }
 
 
 table,td,th{
   border-spacing: 2ch;
   text-align: center;
-  width: 50%;
+  width: 100%;
   color: rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
 
+
+}
+
+/*
+*
+Estilos Buscador
+*
+*/
+.buscador{
+  margin: 80px auto;
+  width: 300px;
+  height: 50px;
+}
+
+.container-1 input#search{
+  width: 300px;
+  height: 50px;
+  background: #ffffff;
+  border: none;
+  float: left;
+  color: #000000;
+  padding-left: 45px;
+  border-radius: 5px;
 }
 

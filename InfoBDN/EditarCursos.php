@@ -53,6 +53,7 @@ include("Funciones.php");
         }else{
             $sql = "SELECT * FROM cursos WHERE codigo = '$id'";
             $result=mysqli_query($conexion, $sql);
+
             while ($row=mysqli_fetch_array($result)){
                 ?>
                 <div class="Contenedor-Tabla">
