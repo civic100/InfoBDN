@@ -87,4 +87,5 @@ class Alumno extends Database{
         $this->activo = $activo;
         return $this;
     }
+    
 }
