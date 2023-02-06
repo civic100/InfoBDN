@@ -88,4 +88,10 @@ class Alumno extends Database{
         return $this;
     }
     
+    public function validarAlumno(){
+        // Consulta
+        $sql = "SELECT * FROM alumnos where dni='".$this->dni."' ADN contraseña= '".$this->contraseña."'";
+        $rows = $this->db->query($sql);
+        return $rows->fetchAll(PDO::FETCH_CLASS);
+    }
 }

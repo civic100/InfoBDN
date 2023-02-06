@@ -1,0 +1,858 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #EBEBE8;
+    font-family: 'Montserrat', sans-serif;
+}
+h1{
+    font-size: 40px;
+}
+h2{
+    font-size: 32px;
+}
+h3{
+    font-size: 24px;
+}
+p{
+    font-size: 16px;
+}
+a{
+    font-size: 16px;
+    font:blod;
+}
+
+
+/*
+*
+Estilos de la barra de menú
+*
+*/
+
+.header-menu{
+    border-bottom: 1px solid #000000;
+}
+
+header {
+    background: #ffffff;
+    width: 100%;
+    clear: both;
+    content:'';
+    display: table;
+}
+
+.txt-logo{
+      padding: 27px;
+      font-size: 41px;
+      float: left;
+}
+
+.img-logo {
+    width: 100px;
+    height: 100px;
+    float: left;
+    padding: 8px;
+    position: relative;
+    
+}
+.img-sesion {
+    width: 80px;
+    height: 80px;
+    float: right;
+    padding: 8px;
+    position: relative;
+    border-radius: 100%;
+    margin-top: -30px;
+}
+
+nav {
+    float: right;
+    margin-right: 40px;
+    margin-top: 30px;
+}
+
+nav ul li {
+    list-style: none;
+    margin-left: 75px;
+    padding: 12px 0;
+    float: left;
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #444;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color:#727BB3
+}
+
+.Titulo{
+    text-align: center;
+    padding: 20px;
+}
+
+.Texto-Home{
+    margin-top: 15px;
+}
+
+
+
+
+ /*
+  *
+  Estilo del contenedor central
+  *
+  */
+  .contenedor-central{
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 260px;
+    margin-bottom: 50px;
+    padding:10px 10px;
+ 
+}
+h3{
+    width:30%;
+    max-width:300px;
+    padding:30px 10px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+}
+
+a:hover {
+    color:#F0BD83;
+}
+
+a{
+    text-decoration: none;
+    color: #000000;
+}
+/*
+*
+Imagen de fondo
+*
+*/
+
+.imagen-login{
+    background-image: url("Fondo-Admin-Login.jpg");
+    margin-top: -413px;
+    height: 640px;
+  }
+  /*
+*
+Estilo del contenedor central
+*
+*/
+.contenedor-central{
+
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.linea-central{
+  border-bottom: 1px solid #000000;
+  margin-top: -88px;
+
+}
+
+h3{
+    width:30%;
+    max-width:300px;
+    padding:10px 10px;
+    text-align: center;
+    background-color: rgb(187, 187, 187);
+}
+
+
+
+
+
+
+/*
+*
+Estilo del Formulario del Admin
+*
+*/
+
+.formulario-admin{
+   z-index: 1;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    
+}
+
+label {
+    display:block;
+    margin-top:20px;
+    letter-spacing:1px;
+}
+ 
+.principal {
+    display:block;
+    margin:0 auto;
+    width:610px;
+}
+ 
+form {
+    background-color: #000000;
+    margin:0 auto;
+    width:40%;
+    color:#ffffff;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+ 
+input{
+    background:#000000;
+    border-color:#f6f6f600 #f6f6f600 #f6f6f6 #f6f6f600;
+    padding:10px;
+    margin-top:5px;
+    font-size:13px;
+    color:#ffffff;
+    margin-top: 20px;
+}
+
+button{
+  background:#ffffff;
+  padding:10px;
+  margin-top:5px;
+  font-size:13px;
+  color:#000000;
+  margin-top: 20px;
+}
+ 
+
+#submit {
+    width:85px;
+    height:35px;
+    border:none;
+    margin-top:20px;
+    cursor:pointer;
+}
+
+.imagen-login{
+    background-image: url("FondoSesion.jpg");
+    background-repeat: no-repeat; 
+    margin-left: -190px;
+    margin-top: -248px;
+    height: 720px;
+}
+
+/*
+*
+*
+Fondo-Formulario
+*
+*/
+.Fondo-Formulario{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .Fondo-Formulario div {
+    margin-top: 10px;
+    background-color: white;
+    width: 98%;
+    height: 850px;
+  }
+    
+    /*
+    *
+    Estilo del Formulario del Admin
+    *
+    */
+    
+  .formulario-usuario{
+    margin-top: -815px;
+    margin-bottom: 50px;
+    margin-right: 1003px;
+        
+  }
+    
+  label {
+    display:block;
+    margin-top:20px;
+    letter-spacing:1px;
+  }
+     
+    .principal {
+        display:block;
+        margin:0 auto;
+        width:610px;
+    }
+  
+  
+    form {
+        background-color: #ffffff;
+        margin:0 auto;
+        width:40%;
+        color:#000000;
+        padding-top: 10px;
+        padding-bottom: 50px;
+   
+    }
+     
+    input{
+        background:#ffffff;
+        border-color:#000000 #000000 #000000 #000000;
+        padding:10px;
+        margin-top:5px;
+        font-size:13px;
+        color:#000000;
+        margin-top: 20px;
+    }
+    
+  
+    h2{
+      font-size: 32px;
+    }
+    
+    #submit {
+        width:85px;
+        height:35px;
+        border:none;
+        margin-top:20px;
+        cursor:pointer;
+    }
+    #submit:hover {
+      background-color: red;
+      color: white;
+    }
+    
+  
+    /*
+    *
+    Imagen
+    *
+    */
+    .imagen-login{
+        background-image: url("FotoRegistro.jpg");
+        background-repeat: no-repeat;
+        margin-top: -720px;
+        height: 720px;
+        position: relative;
+        margin-left: 790px;
+    }
+  
+/*
+*
+Estilo del contenedor central
+*
+*/
+.contenedor-central{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 65px;
+}
+.linea-central{
+  border-bottom: 1px solid #000000;
+  margin-top: -88px;
+  margin-bottom: 100px;
+
+}
+
+h3{
+    width:30%;
+    max-width:300px;
+    padding:10px 10px;
+    text-align: center;
+    background-color: #F2F4FA;
+    margin-top: 150px;
+}
+
+.imagen-Profe{
+    background-image: url("FondoProfesores-Cursos.jpg");
+    height: 430px;
+  }
+
+/*
+*
+Estilo del contenedor de los profesores
+*
+*/
+.Contenedor-Profesores{
+    margin: 20px auto;
+    width:400px;
+    height:400px;
+    display:grid;
+    grid-template-columns: 200px 200px;
+    grid-row: auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+/*
+*
+Estilos Buscador
+*
+*/
+.buscador{
+    margin: 50px auto;
+    width: 300px;
+    height: 50px;
+}
+
+.container-1 input#search{
+    width: 300px;
+    height: 50px;
+    background: #ffffff;
+    border: none;
+    float: left;
+    color: #000000;
+    padding-left: 45px;
+    border-radius: 5px;
+}
+
+
+.Contenedor-cursos{
+    margin: 0 auto;
+    width: 20%;
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+   
+  }
+  
+  /*
+*
+Estilodelcontenedorcentral
+*
+*/
+.contenedor-central{
+    display:flex;
+    justify-content:center;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+.linea-central{
+    border-bottom:1px solid #000000;
+    margin-top:-88px;
+
+}
+
+h3{
+    width:30%;
+    max-width:300px;
+    padding:10px 10px;
+    text-align:center;
+    background-color:rgb(187,187,187);
+}
+
+/*
+*
+EstilodelFormulariodelAdmin
+*
+*/
+
+.formulario-admin{
+    z-index:1;
+    display:flex;
+    justify-content:center;
+    margin-top:100px;
+    margin-bottom:50px;
+}
+
+label{
+    display:block;
+    margin-top:20px;
+    letter-spacing:1px;
+}
+
+.principal{
+    display:block;
+    margin:0 auto;
+    width:610px;
+}
+
+form{
+    background-color:#000000;
+    margin:0auto;
+    width:40%;
+    color:#ffffff;
+    padding-top:10px;
+    padding-bottom:50px;
+    text-align:center;
+}
+
+input{
+    background:#000000;
+    border-color:#f6f6f600#f6f6f600#f6f6f6#f6f6f600;
+    padding:10px;
+    margin-top:5px;
+    font-size:13px;
+    color:#ffffff;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+
+button{
+    background:#ffffff;
+    padding:10px;
+    margin-top:5px;
+    font-size:13px;
+    color:#000000;
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+
+#submit{
+    width:85px;
+    height:35px;
+    border:none;
+    margin-top:20px;
+    cursor:pointer;
+}
+
+.imagen-login{
+    background-image: url("FondoSesion.jpg");
+    background-repeat: no-repeat; 
+    margin-left: -180px;
+    margin-top:-248px;
+    height:720px;
+}
+
+a:hover{
+    color:#F0BD83;
+}
+
+a{
+    text-decoration:none;
+    color:#ffffff;
+}
+/*
+*
+Fondo del titulo del profesor
+*
+*/
+.Fondo-Home{
+    background-color: #F2F4FA;
+    width: 45%;
+    height: 300px;
+    text-align: center;
+    padding: 50px;
+    margin: -150px auto;
+  }
+  
+.SubTitulo-Contenedor-Home{
+    margin-top:20px;
+}
+
+/*
+*
+Estilo del contenedor Profesor
+*
+*/
+.Texto-Profesor{
+    font-size: 16px;
+}
+
+.Titulo-Profesor{
+    margin-bottom: 20px;
+}
+
+/*
+*
+Estilo del contenedor central
+*
+*/
+.imagen-Profe{
+    background-image: url("FondoHome.jpg");
+    height: 430px;
+  }
+
+/*
+*
+Estilo del contenedor de los cursos
+*
+*/
+.Titulo-Home-Cursos{
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+    margin-bottom: 50px;
+
+}
+
+.box{
+  margin: 0 auto;
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(2,50%);
+ 
+}
+
+
+.tabla{
+  width: 100%;
+ 
+}
+
+table,td,th{
+  border-spacing: 2ch;
+  text-align: center;
+  width: 100%;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+
+}
+
+.Contenedor-Tabla{
+    margin-top: 100px;
+    display: grid;
+   justify-content: center;
+}
+table,td,th{
+    border: 1px solid rgb(0, 0, 0);
+    border-spacing: 0ch;
+    text-align: center;
+    width: 50%;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+}
+
+th{
+    background-color: rgb(90, 90, 90);
+    color: #ffffff;
+    padding:5px;
+}
+
+.f{
+    background-color: red;
+}
+
+a:hover {
+    color:#F0BD83;
+}
+
+a{
+    text-decoration: none;
+    color: #000000;
+}
+
+/*
+*
+Fondo del titulo del profesor
+*
+*/
+
+.Fondo-Profesor{
+    background-color: #F2F4FA;
+    width: 45%;
+    height: 300px;
+    text-align: center;
+    padding: 28px;
+    padding: 28px;
+    margin: -150px auto;
+  }
+  
+/*
+*
+Estilo del contenedor Profesor
+*
+*/
+
+.Texto-Profesor{
+    font-size: 16px;
+}
+
+.Titulo-Profesor{
+    margin-bottom: 20px;
+}
+
+/*
+*
+Estilo del contenedor central
+*
+*/
+.contenedor-central{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.linea-central{
+  border-bottom: 1px solid #000000;
+  margin-top: -75px;
+
+}
+
+h3{
+    width:30%;
+    max-width:300px;
+    padding:10px 10px;
+    text-align: center;
+    background-color: #F2F4FA;
+    margin-top: 150px;
+}
+
+.imagen-Profe{
+    background-image: url("FondoProfesores-Cursos.jpg");
+    height: 430px;
+  }
+
+/*
+*
+Estilo del contenedor de los profesores
+*
+*/
+.box{
+  margin: 0 auto;
+  width: 40%;
+  display: grid;
+  grid-template-columns: repeat(2,47%);
+  text-align: center;
+
+}
+
+/*
+*
+Estilos Buscador
+*
+*/
+.buscador{
+  margin: 80px auto;
+  width: 300px;
+  height: 50px;
+}
+
+.container-1 input#search{
+  width: 300px;
+  height: 50px;
+  background: #ffffff;
+  border: none;
+  float: left;
+  color: #000000;
+  padding-left: 45px;
+  border-radius: 5px;
+}
+
+/*
+*
+Fondo del titulo del profesor
+*
+*/
+
+.Fondo-Profesor{
+    background-color: #F2F4FA;
+    width: 45%;
+    height: 300px;
+    text-align: center;
+    padding: 28px;
+    padding: 28px;
+    margin: -150px auto;
+  }
+  
+/*
+*
+Estilo del contenedor Profesor
+*
+*/
+
+.Texto-Profesor{
+    font-size: 16px;
+}
+
+.Titulo-Profesor{
+    margin-bottom: 20px;
+}
+
+/*
+*
+Estilo del contenedor central
+*
+*/
+.contenedor-central{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.linea-central{
+  border-bottom: 1px solid #000000;
+  margin-top: -75px;
+
+}
+
+h3{
+    width:30%;
+    max-width:300px;
+    padding:10px 10px;
+    text-align: center;
+    background-color: #F2F4FA;
+    margin-top: 150px;
+}
+
+.imagen-Profe{
+    background-image: url("FondoProfesores-Cursos.jpg");
+    height: 430px;
+  }
+
+/*
+*
+Estilo del contenedor de los profesores
+*
+*/
+
+.Contenedor-Cursos{
+margin-top:50px;
+}
+.box{
+  margin: 0 auto;
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(2,50%);
+ 
+}
+
+
+.tabla{
+  width: 100%;
+
+}
+
+
+table,td,th{
+  border-spacing: 2ch;
+  text-align: center;
+  width: 100%;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+
+
+}
+
+/*
+*
+Estilos Buscador
+*
+*/
+.buscador{
+  margin: 80px auto;
+  width: 300px;
+  height: 50px;
+}
+
+.container-1 input#search{
+  width: 300px;
+  height: 50px;
+  background: #ffffff;
+  border: none;
+  float: left;
+  color: #000000;
+  padding-left: 45px;
+  border-radius: 5px;
+}
+
