@@ -1,0 +1,77 @@
+/*
+*
+Fondo del titulo del profesor
+*
+*/
+.Fondo-Home{
+    background-color: #F2F4FA;
+    width: 45%;
+    height: 300px;
+    text-align: center;
+    padding: 50px;
+    margin: -150px auto;
+  }
+  
+.SubTitulo-Contenedor-Home{
+    margin-top:20px;
+}
+
+/*
+*
+Estilo del contenedor Profesor
+*
+*/
+.Texto-Profesor{
+    font-size: 16px;
+}
+
+.Titulo-Profesor{
+    margin-bottom: 20px;
+}
+
+/*
+*
+Estilo del contenedor central
+*
+*/
+.imagen-Profe{
+    background-image: url("FondoHome.jpg");
+    height: 430px;
+  }
+
+/*
+*
+Estilo del contenedor de los cursos
+*
+*/
+.Titulo-Home-Cursos{
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+    margin-bottom: 50px;
+
+}
+
+.box{
+  margin: 0 auto;
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(2,50%);
+ 
+}
+
+
+.tabla{
+  width: 100%;
+ 
+}
+
+table,td,th{
+  border-spacing: 2ch;
+  text-align: center;
+  width: 100%;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+
+}
+

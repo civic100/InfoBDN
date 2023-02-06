@@ -8,8 +8,8 @@ include("Funciones.php");
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="estilos-css/Estilos-RegistroUsuario.css" />
-    <link rel="stylesheet" type="text/css" href="estilos-css/Estilo-Menu-Cuerpo.css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/Estilos-RegistroUsuario.css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/Estilo-Menu-Cuerpo.css" />
     <title>Registro Alumnos</title>
 </head>
     <body>
