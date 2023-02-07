@@ -88,10 +88,28 @@ class Alumno extends Database{
         return $this;
     }
     
+    //login
     public function validarAlumno(){
         // Consulta
         $sql = "SELECT * FROM alumnos where dni='".$this->dni."' ADN contraseña= '".$this->contraseña."'";
         $rows = $this->db->query($sql);
         return $rows->fetchAll(PDO::FETCH_CLASS);
     }
+
+    //Registrar
+    function registrarAlumno(){
+        //Controlar que el cliente no este repetido
+       $sql = "SELECT * FROM alumnos where  dni= '".$this->dni."'";
+       $rows = $this->db->query($sql);
+       //Si no lo esta ejecutamos esta parte
+       if ($rows->rowCount() == 0){
+               $sql1= "INSERT INTO alumnos (dni, nombre, apellido, edad, foto, email, contraseña) VALUES ('".$this->dni."','".$this->nombre."','".$this->apellido."','".$this->edad."','".$this->foto."','".$this->email."','".$this->contraseña."','1')";
+               $rows1 = $this->db->query($sql1);
+               return  $rows1->rowCount();
+       }
+       else{
+               return  $rows->rowCount();
+       }
+    }
+
 }

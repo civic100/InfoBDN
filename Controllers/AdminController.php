@@ -12,7 +12,7 @@
                     $_SESSION["Administrador"] = $_POST["nombre"];
                     header('Location:index.php?controller=Admin&action=home'); 
                 }else{
-                    require_once ("views/admin/login.php");
+                    require_once ("resources/views/admin/login.php");
                 }
                 //Una vez terminado recoger los datos, validarlos los pasaremos a la vista y dependiendo los datos se mostrará una cosa u otra.
             } else {
@@ -24,12 +24,12 @@
 
         //Función para crear el formulario del login Admin
         public function login(){
-            require_once "views/admin/login.php";
+            require_once "resources/views/admin/login.php";
         }
 
         //Función para redirigir a la página de inicio
         public function home(){
-            require_once "views/admin/home.php";
+            require_once "resources/views/admin/home.php";
         }
 
     }
