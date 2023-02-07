@@ -1,7 +1,7 @@
 <div class="fondoAdminHome">
     <div class="lineaAdmin">
         <div class="botonHomeAdmin btn">
-            <a  href='index.php?controller=Pedido&action=mostrarPedidos'>Pedidos</a>
+            <a  href='index.php?controller=Cursos&action=mostrarCursos'>Cursos</a>
         </div>
         <div class="botonHomeAdmin btn">
             <a  href='index.php?controller=Producto&action=listado'>Productos</a>

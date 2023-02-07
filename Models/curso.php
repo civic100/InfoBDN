@@ -98,7 +98,7 @@ class Curso extends Database{
     }
      //FUNCIONES
 
-        //Funcion para saber si ya tenemos creado un producto con este ISBN
+      
         public function validar($nombre){
             // Consulta
             $sql = "SELECT * FROM cursos where nombre = '".$nombre."'";
@@ -110,8 +110,6 @@ class Curso extends Database{
                 return false;
             }
         }
-
-        //Funcion para insertar producto en la base de datos
         public function insertar()
         {
             $sql = "INSERT INTO cursos () VALUES ('".$this->nombre."')";
@@ -120,7 +118,6 @@ class Curso extends Database{
             return $sql;
         }
 
-        //Funcion para eliminar producto
         public function eliminar()
         {
             $sql = "DELETE FROM cursos WHERE nombre = '".$this->nombre."'";
@@ -129,7 +126,6 @@ class Curso extends Database{
             return $sql;
         }
 
-        //Funcion para obtener un array de todos lo productos
         public function listadoCursos(){
             $sql = "SELECT * FROM cursos";
             $rows = $this->db->query($sql);

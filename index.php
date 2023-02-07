@@ -25,7 +25,7 @@ session_start();
         //require_once "views/general/cabecera.html";
         
         if(isset($_SESSION["Administrador"])){
-            require_once "views/general/menuAdmin.php";
+            require_once "resources/views/general/menuAdmin.php";
         }elseif(!(isset($_GET['controller']) && isset($_GET['action']))){
             $categorias = new AlumnoController("");
             /*$categorias->categoriasMenu();*/
@@ -53,7 +53,7 @@ session_start();
         }else{
             echo "No existe el controlador";
         }
-        require_once "views/general/pie.html";
+        require_once "resources/views/general/pie.html";
         
         ?>
        

@@ -31,7 +31,7 @@
                 <div class="buttonSubmit">
                     <input type="submit" value="Registrarse" class="rainbowButton" >
                     <br>
-                    <a href= 'index.php?controller=Cliente&action=login' class='enlaceMenuAdmin'>Login Usuario</a>
+                    <a href= 'index.php?controller=Alumno&action=login'>Login Usuario</a>
                 </div>
                 
             </form>
