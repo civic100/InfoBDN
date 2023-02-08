@@ -34,15 +34,18 @@
                                 }else{
                                     echo '<div><b>Ocurrió algún error al subir el fichero. No pudo guardarse.</b></div>';
                                     echo "Por favor vuelva a registrarse..";
-                                    require_once "resources/views/curso/registrar.php";
+                                    require_once "resources/views/curso/registro.php";
                                 }
                             }
                         }
                     }else{
                         echo "<script>alert('El codigo ".$_POST['codigo']." ya esta Registrado')</script>";
-                        require_once "resources/views/curso/registrar.php";
+                        require_once "resources/views/curso/registro.php";
                     }
+                }else{
+                    require_once "resources/views/curso/registro.php";
                 }
+
             }else{
                 ?>
                 <script>window.location.replace("index.php");</script>
@@ -55,7 +58,7 @@
                 require_once "models/curso.php";
                 $producto = new Curso();
                 $lista = $producto->listadoCursos();
-                require_once "resource/views/curso/lista.php";
+                require_once "resources/views/curso/lista.php";
             }else{
                 ?>
                 <script>window.location.replace("index.php");</script>
@@ -64,6 +67,7 @@
             
         }
         public function mostrarCursos(){
+            
             
         }
 

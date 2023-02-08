@@ -1,6 +1,6 @@
 
     <div class="botonAdmin">
-        <a class="enlaceAdmin" href="index.php?controller=Curso&action=registrar">Nuevo Producto</a>
+        <a class="enlaceAdmin" href="index.php?controller=Curso&action=registrar">Nuevo Curso</a>
     </div>
     <?php 
         if(count($lista) > 0){
@@ -22,11 +22,11 @@
                     if($clave1 != 'descripcion'){
                         if($clave1 == 'imagen'){
                             echo "<td class='tdAdmin'><img class='imagenAdmin' src='".$valor1."' ></td>";
-                        }elseif($clave1 == 'destacado'){
+                        }elseif($clave1 == 'activo'){
                             if($valor1 == 0){
-                                echo "<td class='tdAdmin'><a href='index.php?controller=Producto&action=editarDestacado&isbn=".$valor->codigo."&destacado=1' class='enlaceDestacado'><img src='resources/views/css/assets/imagenes/destacadoNo.png' class='destacado' /></a></td>";
+                                echo "<td><a href='index.php?controller=Curso&action=editarDestacado&codigo=".$valor->codigo."&destacado=1' class='enlaceDestacado'><img style='width:50px;' src='resources/css/assets/imagenes/destacadoNo.png' class='destacado' /></a></td>";
                             }else{
-                                echo "<td class='tdAdmin'><a href='index.php?controller=Producto&action=editarDestacado&isbn=".$valor->codigo."&destacado=0' class='enlaceDestacado'><img src='resources/views/css/assets/imagenes/destacadoSi.png' class='destacado' /></a></td>";
+                                echo "<td><a href='index.php?controller=Curso&action=editarDestacado&codigo=".$valor->codigo."&destacado=0' class='enlaceDestacado'><img style='width:50px;' src='resources/css/assets/imagenes/destacadoSi.png' class='destacado' /></a></td>";
                             }
                         }
                         elseif($clave1 != 'estado'){
@@ -34,18 +34,18 @@
                         }
                     }
                 }
-                echo "<td class='tdAdmin'><a href='index.php?controller=Producto&action=editar&codigo=".$valor->codigo."'><img src='resources/resources/views/css/assets/imagenes/editarproducto.png' /></a></td>";
-                echo "<td class='tdAdmin'><a href='index.php?controller=Producto&action=editarImagen&codigo=".$valor->codigo."'><img src='resources/views/css/assets/imagenes/editarimagen.png' /></a></td>";
-                echo "<td class='tdAdmin'><a class='enlaceActivado' href='index.php?controller=Producto&action=activar&codigo=".$valor->codigo."'>";
-                if($valor->estado == 0){
-                    echo "<img class='activado' src='resources/views/css/assets/imagenes/desactivado.png' />";
+                echo "<td class='tdAdmin'><a href='index.php?controller=Curso&action=editar&codigo=".$valor->codigo."'><img style='width:50px;' src='resources/css/assets/imagenes/editarproducto.png' /></a></td>";
+                echo "<td class='tdAdmin'><a href='index.php?controller=Curso&action=editarImagen&codigo=".$valor->codigo."'><img style='width:50px;' src='resources/css/assets/imagenes/editarimagen.png' /></a></td>";
+                echo "<td class='tdAdmin'><a class='enlaceActivado' href='index.php?controller=Curso&action=activar&codigo=".$valor->codigo."'>";
+                if($valor->activo == 0){
+                    echo "<img style='width:50px;' class='activado' src='resources/css/assets/imagenes/desactivado.png' />";
                 }else{
-                    echo "<img class='activado' src='resources/views/css/assets/imagenes/activado.png' />";
+                    echo "<img style='width:50px;' class='activado' src='resources/css/assets/imagenes/activado.png' />";
                 }
                 echo "</a></td>";
                 echo "</tr>";
             }
             echo "</table>";
         }else{
-            echo "No hay productos";
+            echo "No hay Cursos";
         }
