@@ -112,7 +112,7 @@ class Curso extends Database{
         }
         public function insertar()
         {
-            $sql = "INSERT INTO cursos () VALUES ('".$this->nombre."')";
+            $sql = "INSERT INTO cursos (codigo, nombre, descripcion, horas, fechainicio, fechafinal, profesor, activo, foto) VALUES (NULL,'".$this->nombre."','".$this->descripcion."','".$this->horas."')";
             $this->db->query($sql);
             //return $this;   
             return $sql;
@@ -131,4 +131,11 @@ class Curso extends Database{
             $rows = $this->db->query($sql);
             return $rows->fetchAll(PDO::FETCH_CLASS);
         }
+          //Funcion para saber si el producto esta activado o descativado
+          public function obtenerEstado(){
+            $sql = "SELECT estado FROM producto WHERE ISBN = '".$this->isbn."'";
+            $rows = $this->db->query($sql);
+            return $rows->fetchAll(PDO::FETCH_CLASS);
+        }
+
 }

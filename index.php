@@ -29,7 +29,7 @@ session_start();
         }elseif(!(isset($_GET['controller']) && isset($_GET['action']))){
             $categorias = new AlumnoController("");
             /*$categorias->categoriasMenu();*/
-        }else if($_GET['action'] != "validarCliente" && $_GET['action'] != "login" && $_GET['action'] != "registrar" && $_GET['action'] != "validar"){
+        }else if($_GET['action'] != "validarAlumno" && $_GET['action'] != "login" && $_GET['action'] != "registrar" && $_GET['action'] != "validar"){
             $categorias = new AlumnoController("");
            /* $categorias->categoriasMenu();*/
         }

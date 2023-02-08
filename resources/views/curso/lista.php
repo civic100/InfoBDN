@@ -35,12 +35,12 @@
                     }
                 }
                 echo "<td class='tdAdmin'><a href='index.php?controller=Curso&action=editar&codigo=".$valor->codigo."'><img style='width:50px;' src='resources/css/assets/imagenes/editarproducto.png' /></a></td>";
-                echo "<td class='tdAdmin'><a href='index.php?controller=Curso&action=editarImagen&codigo=".$valor->codigo."'><img style='width:50px;' src='resources/css/assets/imagenes/editarimagen.png' /></a></td>";
+                echo "<td class='tdAdmin'><a href='index.php?controller=Curso&action=editarImagen&codigo=".$valor->codigo."'><img style='width:50px; ' src='resources/css/assets/imagenes/editarimagen.png' /></a></td>";
                 echo "<td class='tdAdmin'><a class='enlaceActivado' href='index.php?controller=Curso&action=activar&codigo=".$valor->codigo."'>";
                 if($valor->activo == 0){
-                    echo "<img style='width:50px;' class='activado' src='resources/css/assets/imagenes/desactivado.png' />";
+                    echo "<img style='width:100px;' class='activado' src='resources/css/assets/imagenes/desactivado.png' />";
                 }else{
-                    echo "<img style='width:50px;' class='activado' src='resources/css/assets/imagenes/activado.png' />";
+                    echo "<img style='width:100px;' class='activado' src='resources/css/assets/imagenes/activado.png' />";
                 }
                 echo "</a></td>";
                 echo "</tr>";
