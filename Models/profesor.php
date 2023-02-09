@@ -74,4 +74,13 @@ class Profesor extends Database{
         $this->activo = $activo;
         return $this;
     }
+
+    public function profesores(){
+
+        $sql = "SELECT * FROM profesores ";
+        $rows = $this->db->query($sql);
+        return $rows->fetchAll(PDO::FETCH_CLASS);
+    
+    }
+
 }

@@ -4,51 +4,57 @@
 <!--Contenido antes de las olas-->
     <div class="inner-headerProducto flex">
          <div class="fromGenerico">
+         <h2> Añadir Curso </h2>
             <!-- Creamos el formulario donde su action será pasar los datos al model/loginAdmin y su función validar -->
-            <form action="index.php?controller=Curso&action=registrar" method="POST" enctype="multipart/form-data">
-                <div style=" float: left; width: 45%; text-align: justify;">
+            <form action="index.php?controller=Curso&action=registrar" method="POST"  enctype="multipart/form-data" >
+            <div class="Contenedor-Tabla">
 
-                    <label for='ISBN'>ISBN:</label>
-                    <input type="text" name = "isbn" require>
+                <label for="nombre">
+                    Nombre del Curso:
+                </label >
+                    <input type="text"  maxlength="15" id = "nombre" name="nombre" required /><br>
 
-                    <label for='Nombre'>Nombre:</label>
-                    <input type="text" name = "nombre" require>
+                <label for="descripcion">
+                    Descripcion del Curso:
+                </label >
+                    <input type="text"  maxlength="40" id = "descripcion" name="descripcion" required /><br>
 
-                    <label for='Descripcion'>Descripcion:</label>
-                    <textarea class="textareaRegistroForm" name="descripcion" rows="2" cols="25"></textarea>
+                <label for="horadurada">
+                    Hora durada del curs:   
+                </label >
+                    <input type="int"  name="horas" maxlength="15" id = "horas" required/><br>
 
+                <label for="fechainicio">
+                    Data de inici del Curso:
+                </label >
+                    <input type="date"  maxlength="15" id = "fechainicio" name="fechainicio" required /><br>
 
-                    <label for='Precio'>Precio:</label>
-                    <input type="number" name = "precio" require>
-                </div>
-                <div style="float: right; width: 45%; text-align: justify;">
-                    <label for='Stock'>Stock:</label>    
-                    <input type="number" name = "stock" require>
+                <label for="fechafinal">
+                    Data de fi del Curso:
+                </label >
+                    <input type="date"  maxlength="15" id = "fechafinal" name="fechafinal" required /><br>
+                        
+                <label for="profesor">
+                    Nombre del Profesor:
+                </label >
 
-                    <label for='Categoria'>Categoria:</label>  
-                    <select name="categoria" id="categoria" class='selectProducto'>
-                    <option value='' selected disabled class='optionProducto'></option>
+                    <select name='profesor' id = 'profesor'>"
                         <?php
-                        foreach($listaCategorias as $clave => $valor){
-                            echo "<option value='".$valor['idCategoria']."' class='optionProducto'>".$valor['nombre']."</option>";
-                        }
-                        ?>
+                           foreach($listaProfesores as $clave => $valor){
+                                echo "<option value=".$valor->dni.">".$valor->nombre."</option>";
+                            }
+                        ?> 
                     </select>
-
-                    <label for='Autor'>Autor:</label>
-                    <input type="text" name = "autor">
-
-                    <label for='imagen'>Imagen:</label>
-                    <div class="upload-btn-wrapper1">
-                      <button class="btn1">Subir Imagen</button>
-                      <input type="file" name="myfile" />
-                    </div>
-
-                </div>
-                <div class="buttonSubmitProducto">
-                    <input type="submit" value="Registrarse" class="rainbowButton" >
-                </div>
-                
+                    <br>     
+                    <label for ="foto">
+                    Foto:
+                </label>
+                <input type="file"   id = "foto" name="foto" required /><br>
+                    <br>     
+                <input type="submit"  value="Aceptar"/>
+            </form>
+            <br>
+            <a href='CursosAdmin.php'>Editar los Cursos</a><br>
             </form>
         </div>
     </div>

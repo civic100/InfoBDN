@@ -26,8 +26,8 @@
                                 echo "<meta http-equiv=REFRESH content=2,URL=index.php?controller=Curso&action=registrar>";
                             }else{
                             
-                                if (move_uploaded_file($temp, "resources/views/css/assets/fotos/foto_".$_POST['codigo'].".jpg")) {
-                                    $curso->setFoto("resources/views/css/assets/fotos/foto_".$_POST['codigo'].".jpg");
+                                if (move_uploaded_file($temp, "resources/views/css/assets/fotos/foto_".$_POST['nombre'].".jpg")) {
+                                    $curso->setFoto("resources/views/css/assets/fotos/foto_".$_POST['nombre'].".jpg");
                                     $curso->insertar();
                                     $lista = $curso->listadoCursos();
                                     require_once "resources/views/curso/lista.php";
@@ -39,10 +39,13 @@
                             }
                         }
                     }else{
-                        echo "<script>alert('El codigo ".$_POST['codigo']." ya esta Registrado')</script>";
+                        echo "<script>alert('El nombre ".$_POST['nombre']." ya esta Registrado')</script>";
                         require_once "resources/views/curso/registro.php";
                     }
                 }else{
+                    require_once "models/profesor.php";
+                    $profesor = new Profesor();
+                    $listaProfesores = $profesor->profesores();
                     require_once "resources/views/curso/registro.php";
                 }
 
