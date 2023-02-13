@@ -53,7 +53,7 @@ session_start();
         }else{
             echo "No existe el controlador";
         }
-        require_once "resources/views/general/pie.html";
+      
         
         ?>
        

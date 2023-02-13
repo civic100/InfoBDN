@@ -76,11 +76,39 @@ class Profesor extends Database{
     }
 
     public function profesores(){
-
         $sql = "SELECT * FROM profesores ";
         $rows = $this->db->query($sql);
         return $rows->fetchAll(PDO::FETCH_CLASS);
-    
+    }
+
+    public function validar($dni){
+        // Consulta
+        $sql = "SELECT * FROM profesores where dni = '".$dni."'";
+        $rows = $this->db->query($sql);
+        //return $rows->rowCount();
+        if($rows->rowCount() == 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function insertar()
+        {
+            $sql = "INSERT INTO profesores (dni, nombre, apellido, titulacion, foto, activo) VALUES ('".$this->dni."','".$this->nombre."','".$this->apellido."','".$this->tituloacademico."','".$this->foto."')";
+            $this->db->query($sql);
+            //return $this;   
+            return $sql;
+        }
+
+    public function obtenerActivo(){
+        $sql = "SELECT activo FROM profesores WHERE dni = '".$this->dni."'";
+        $rows = $this->db->query($sql);
+        return $rows->fetchAll(PDO::FETCH_CLASS);
+    }
+
+    public  function activar(){
+        $sql = "UPDATE profesores SET activo = '".$this->activo."' WHERE dni = '".$this->dni."'";
+        $this->db->query($sql);
     }
 
 }

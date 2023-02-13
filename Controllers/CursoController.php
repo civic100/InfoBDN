@@ -7,7 +7,7 @@
                 if(isset($_POST['nombre'])){
                     require_once "models/curso.php";
                     $curso = new Curso();
-                    if($curso->validar($_POST['nombre'])){
+                    if($curso->validar($_POST['codigo'])){
                         foreach($_POST as $clave => $valor){
                            $set = "set".$clave;
                            $curso->$set($valor);
@@ -26,8 +26,8 @@
                                 echo "<meta http-equiv=REFRESH content=2,URL=index.php?controller=Curso&action=registrar>";
                             }else{
                             
-                                if (move_uploaded_file($temp, "resources/views/css/assets/fotos/foto_".$_POST['nombre'].".jpg")) {
-                                    $curso->setFoto("resources/views/css/assets/fotos/foto_".$_POST['nombre'].".jpg");
+                                if (move_uploaded_file($temp, "resources/views/css/assets/fotos/foto_".$_POST['codigo'].".jpg")) {
+                                    $curso->setFoto("resources/views/css/assets/fotos/foto_".$_POST['codigo'].".jpg");
                                     $curso->insertar();
                                     $lista = $curso->listadoCursos();
                                     require_once "resources/views/curso/lista.php";
@@ -39,7 +39,7 @@
                             }
                         }
                     }else{
-                        echo "<script>alert('El nombre ".$_POST['nombre']." ya esta Registrado')</script>";
+                        echo "<script>alert('El codigo ".$_POST['codigo']." ya esta Registrado')</script>";
                         require_once "resources/views/curso/registro.php";
                     }
                 }else{
@@ -123,8 +123,9 @@
                     $lista = $curso->listadoCursos();
                     require_once "resources/views/curso/lista.php";
                 }else{
+                    require_once "models/curso.php";
                     echo "El Curso ".$_GET['codigo']." No existe";
-                    $lista = $producto->listadoProductos();
+                    $lista = $curso->listadoCursos();
                     require_once "resources/views/producto/lista.php";
                 }
             }else{
@@ -137,9 +138,9 @@
         //Funcion para editar la imagen del producto
         public function editarImagen(){
             if(isset($_SESSION['Administrador'])){//Validamos que accede el administrador
-                if(isset($_POST['isbn'])){//Validaos que tengamos un formulario rellenado
-                    require_once "models/producto.php";
-                    $producto = new Producto();
+                if(isset($_POST['codigo'])){//Validaos que tengamos un formulario rellenado
+                    require_once "models/curso.php";
+                    $curso = new Curso();
                     //Recogemos el archivo enviado por el formulario
                     $archivo = $_FILES['imagen']['name'];
                     //Si el archivo contiene algo y es diferente de vacio
@@ -156,33 +157,33 @@
                         }else{
                             //Si la imagen es correcta en tamaño y tipo
                             //Se intenta subir al servidor C:\xampp\htdocs\tiendaonline\views\css\assets\fotos
-                            if (move_uploaded_file($temp, "views/css/assets/fotos/foto_".$_POST['isbn'].".jpg")) {
-                                $producto->setImagen("views/css/assets/fotos/foto_".$_POST['isbn'].".jpg");
-                                $producto->setIsbn($_POST['isbn']);
-                                $producto->editarImagen();
-                                $lista = $producto->listadoProductos();
-                                require_once "views/producto/lista.php";
+                            if (move_uploaded_file($temp, "resources/views/css/assets/fotos/foto_".$_POST['codigo'].".jpg")) {
+                                $curso->setFoto("resources/views/css/assets/fotos/foto_".$_POST['codigo'].".jpg");
+                                $curso->setCodigo($_POST['codigo']);
+                                $curso->editarImagen();
+                                $lista = $curso->listadoCursos();
+                                require_once "resources/views/producto/lista.php";
                             }else{
                                 //Si no se ha podido subir la imagen, mostramos un mensaje de error
                                 echo "<div><b>Ocurrió algún error al subir el fichero. No pudo guardarse.</b></div>";
                                 echo "Por favor vuelva a Editar la imagen..";
-                                require_once "views/producto/editarImagen.php";
+                                require_once "resources/views/curso/editarImagen.php";
                             }
                         }
                     }
 
-                }elseif(isset($_GET['isbn'])){
-                    require_once "models/producto.php";
-                    $producto = new Producto();
-                    $producto ->setIsbn($_GET['isbn']);
-                    $lista = $producto->listadoProducto();
-                    require_once "views/producto/editarImagen.php";
+                }elseif(isset($_GET['codigo'])){
+                    require_once "models/curso.php";
+                    $producto = new Curso();
+                    $producto ->setNombre($_GET['codigo']);
+                    $lista = $producto->listadoCursos();
+                    require_once "resources/views/curso/editarImagen.php";
                 }
                 else{
-                    require_once "models/producto.php";
-                    $producto = new Producto();
-                    $lista = $producto->listadoProductos();
-                    require_once "views/producto/lista.php";
+                    require_once "models/curso.php";
+                    $producto = new Curso();
+                    $lista = $producto->listadoCursos();
+                    require_once "resources/views/curso/lista.php";
                 }
             }else{
                 ?>

@@ -1,13 +1,13 @@
 
-<div class="header">
-    <h1 class='tituloRegistroProducto'>Registro Producto</h1>
+<div>
+    <h1>Registro Producto</h1>
 <!--Contenido antes de las olas-->
-    <div class="inner-headerProducto flex">
-         <div class="fromGenerico">
+    <div>
+         <div>
          <h2> Añadir Curso </h2>
             <!-- Creamos el formulario donde su action será pasar los datos al model/loginAdmin y su función validar -->
             <form action="index.php?controller=Curso&action=registrar" method="POST"  enctype="multipart/form-data" >
-            <div class="Contenedor-Tabla">
+            <div >
 
                 <label for="nombre">
                     Nombre del Curso:
@@ -40,7 +40,7 @@
 
                     <select name='profesor' id = 'profesor'>"
                         <?php
-                           foreach($listaProfesores as $clave => $valor){
+                            foreach($listaProfesores as $clave => $valor){
                                 echo "<option value=".$valor->dni.">".$valor->nombre."</option>";
                             }
                         ?> 
