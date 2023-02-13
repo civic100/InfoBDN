@@ -13,7 +13,7 @@
         <label for="Password">
             Password:
         </label >
-            <input type="password"  maxlength="15" id = "Password" name="Password" required /><br>
+            <input type="password"  maxlength="15" id = "password" name="password" required /><br>
             <button type="submit" name="subir" value="Enviar">Enviar</button><br>
 
         <br>

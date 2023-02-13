@@ -1,3 +1,4 @@
+    
     <div class="Titulo"> 
         <div class="Titulo-Home"> <h1 class="Titulo-Home">Centro Academico InfoBDN</h1> </div>
         <div class="Texto-Home"> <p class="Texto-Home">InfoBDN es una plataforma de aprendizaje en línea. Está dirigido a adultos profesionales.</p> </div>
@@ -24,12 +25,12 @@
                     echo "<tr>";
                     if($campo->activo =='1'){
                         //Imprimimos los profesores activos.
-                        /* echo "<td> <img width='50' height='50' src=". $campo['foto'] ."</td>";*/
+                            echo "<td> <img width='50' height='50' src=".$campo->foto."</td>";
                             echo "</br>";
-                            echo "<td>" .$campo->nombre ."</td>";
-                            echo "<td>".$campo->descripcion. "</td>";
-                            echo "<td>".$campo->fechainicio. "</td>";
-                            echo "<td>".$campo->fechafinal. "</td>";
+                            echo "<td>".$campo->nombre."</td>";
+                            echo "<td>".$campo->descripcion."</td>";
+                            echo "<td>".$campo->fechainicio."</td>";
+                            echo "<td>".$campo->fechafinal."</td>";
 
                             $CodiCurso=$campo->codigo;
                             echo "<tr>";

@@ -27,7 +27,7 @@
                                 if (move_uploaded_file($temp, "resources/views/css/assets/fotos/foto_".$_POST['dni'].".jpg")) {
                                     $curso->setFoto("resources/views/css/assets/fotos/foto_".$_POST['dni'].".jpg");
                                     $curso->insertar();
-                                    $lista = $curso->listadoCursos();
+                                    $lista = $curso->profesores();
                                     require_once "resources/views/curso/lista.php";
                                 }else{
                                     echo '<div><b>Ocurrió algún error al subir el fichero. No pudo guardarse.</b></div>';

@@ -28,10 +28,10 @@ session_start();
             require_once "resources/views/general/menuAdmin.php";
         }elseif(!(isset($_GET['controller']) && isset($_GET['action']))){
             $categorias = new AlumnoController("");
-            /*$categorias->categoriasMenu();*/
+            $categorias->Menu();
         }else if($_GET['action'] != "validarAlumno" && $_GET['action'] != "login" && $_GET['action'] != "registrar" && $_GET['action'] != "validar"){
             $categorias = new AlumnoController("");
-           /* $categorias->categoriasMenu();*/
+            $categorias->Menu();
         }
 
         if (isset($_GET['controller'])){

@@ -69,10 +69,8 @@
             }
             
         }
-        public function mostrarCursos(){
-            
-            
-        }
+      
+
         //Funcion para eliminar el Curso
         public function activar(){
             if(isset($_SESSION['Administrador'])){
