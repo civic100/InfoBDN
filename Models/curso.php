@@ -132,10 +132,25 @@ class Curso extends Database{
             return $rows->fetchAll(PDO::FETCH_CLASS);
         }
           //Funcion para saber si el producto esta activado o descativado
-          public function obtenerEstado(){
-            $sql = "SELECT estado FROM producto WHERE ISBN = '".$this->isbn."'";
+          public function obtenerActivo(){
+            $sql = "SELECT activo FROM cursos WHERE codigo = '".$this->codigo."'";
             $rows = $this->db->query($sql);
             return $rows->fetchAll(PDO::FETCH_CLASS);
+        }
+
+        //Funcion para Activar/desactivar Curso
+        public  function activar(){
+            $sql = "UPDATE cursos SET activo = '".$this->activo."' WHERE codigo = '".$this->codigo."'";
+            $this->db->query($sql);
+        }
+
+    
+        //Funcion para editar un producto
+        public function editar(){
+            $sql = "UPDATE curso SET nombre = '".$this->nombre."', descripcion = '".$this->descripcion."', horas = '".$this->horas."', fechainicio =
+            '".$this->fechainicio."', fechafinal = '".$this->fechafinal."', profesor ='".$this->profesor."' WHERE codigo = '".$this->codigo."'";
+            $this->db->query($sql);
+            //return $this;
         }
 
 }

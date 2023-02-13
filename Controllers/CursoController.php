@@ -73,25 +73,25 @@
             
             
         }
-        //Funcion para eliminar el producto
+        //Funcion para eliminar el Curso
         public function activar(){
             if(isset($_SESSION['Administrador'])){
                 if(isset($_GET['codigo'])){
                     require_once "models/curso.php";
-                    $producto = new Curso();
-                    $producto->setCodigo($_GET['codigo']);
-                    $estado = $producto->obtenerEstado();
-                    if($estado[0]->estado == 0){
-                        $producto->setEstado('1');
+                    $curso = new Curso();
+                    $curso->setCodigo($_GET['codigo']);
+                    $activo = $curso->obtenerActivo();
+                    if($activo[0]->activo == 0){
+                        $curso->setActivo('1');
                     }else{
-                        $producto->setEstado('0');
+                        $curso->setActivo('0');
                     }
-                    $producto->activar();
+                    $curso->activar();
                     ?>
-                    <script>window.location.replace("index.php?controller=Producto&action=listado");</script>
+                    <script>window.location.replace("index.php?controller=Curso&action=listado");</script>
                     <?php
                 }else{
-                    require_once "views/producto/lista.php";
+                    require_once "resources/views/curso/lista.php";
                 }
             }else{
                 ?>
@@ -100,32 +100,32 @@
             }
         }
 
-        //Funcion para editar la imagen del producto
+        //Funcion para editar el Curso
         public function editar(){
             if(isset($_SESSION['Administrador'])){
-                if(isset($_GET['isbn'])){
-                    require_once "models/producto.php";
-                    require_once "models/categoria.php";
-                    $categoria = New Categoria("");
-                    $listaCategorias = $categoria->mostrarCategorias();
-                    $producto = new Producto();
-                    $producto->setIsbn($_GET['isbn']);
-                    $lista = $producto->listadoProducto();
-                    require_once "views/producto/editar.php";
-                }elseif(isset($_POST['isbn'])){
-                    require_once "models/producto.php";
-                    $producto = new Producto();
+                if(isset($_GET['codigo'])){
+                    require_once "models/curso.php";
+                    require_once "models/profesor.php";
+                    $profesor = New Profesor("");
+                    $listaProfesores = $profesor->profesores();
+                    $curso = New Curso();
+                    $curso->setCodigo($_GET['codigo']);
+                    $lista = $curso->listadoCursos();
+                    require_once "resources/views/curso/editar.php";
+                }elseif(isset($_POST['codigo'])){
+                    require_once "models/curso.php";
+                    $curso = new Curso();
                     foreach($_POST as $clave => $valor){
-                    $set = "set".$clave;
-                    $producto->$set($valor);
+                        $set = "set".$clave;
+                        $curso->$set($valor);
                     }
-                    $producto->editar();
-                    $lista = $producto->listadoProductos();
-                    require_once "views/producto/lista.php";
+                    $curso->editar();
+                    $lista = $curso->listadoCursos();
+                    require_once "resources/views/curso/lista.php";
                 }else{
-                    echo "El ISBN ".$_GET['isbn']." No existe";
+                    echo "El Curso ".$_GET['codigo']." No existe";
                     $lista = $producto->listadoProductos();
-                    require_once "views/producto/lista.php";
+                    require_once "resources/views/producto/lista.php";
                 }
             }else{
                 ?>
@@ -190,32 +190,6 @@
                 <?php
             }
         }
-
-        //Funcion para editar el destacado del producto
-        public function editarDestacado(){
-            if(isset($_SESSION['Administrador'])){//Validamos que accede el administrador
-                if(isset($_GET['isbn']) && isset($_GET['destacado'])){
-                    require_once "models/producto.php";
-                    $producto = new Producto();
-                    $producto -> setIsbn($_GET['isbn']);
-                    $producto -> setDestacado($_GET['destacado']);
-                    $producto->editarDestacado();
-                    ?>
-                    <script>window.location.replace("index.php?controller=Producto&action=listado");</script>
-                    <?php
-                }else{
-                    require_once "models/producto.php";
-                    $producto = new Producto();
-                    $lista = $producto->listadoProductos();
-                    require_once "views/producto/lista.php";
-                }
-            }else{
-                ?>
-                <script>window.location.replace("index.php");</script>
-                <?php
-            }
-        }  
-                
 
 
     }
