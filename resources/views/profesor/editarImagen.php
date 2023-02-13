@@ -2,7 +2,7 @@
     <h1 >Editar Imagen</h1>
     <div >
          <div >
-            <form action="index.php?controller=Curso&action=editarImagen" method="POST" enctype="multipart/form-data">
+            <form action="index.php?controller=Profesor&action=editarImagen" method="POST" enctype="multipart/form-data">
                 <div>
 
                 <?php 
@@ -20,7 +20,7 @@
                       <input type="file" name="foto" />
                     </div>
 
-                    <input type="hidden" name="codigo" value="<?php echo $_GET['codigo']; ?>" >
+                    <input type="hidden" name="codigo" value="<?php echo $_GET['dni']; ?>" >
 
                 </div>
                 <br>

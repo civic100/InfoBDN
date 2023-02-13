@@ -39,7 +39,7 @@ session_start();
         }
         else{
             //Controlador per dedecte
-            $nombreController = "ClienteController";
+            $nombreController = "AlumnoController";
         }
         if (class_exists($nombreController)){
             $controlador = new $nombreController(); 

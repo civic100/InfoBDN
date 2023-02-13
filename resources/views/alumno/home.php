@@ -13,8 +13,30 @@
 
     <div class="Titulo-Home-Cursos"> 
         <h1 class="Titulo-Home-Cursos">Todos los Cursos</h1> 
+
     </div>
         
     <div class="Contenedor-Cursos">
-            
-</div>
+            <?php
+                foreach($lista as $persona => $campo){
+                echo"<table>";
+                echo "<tr>";
+                    echo "<tr>";
+                    if($campo->activo =='1'){
+                        //Imprimimos los profesores activos.
+                        /* echo "<td> <img width='50' height='50' src=". $campo['foto'] ."</td>";*/
+                            echo "</br>";
+                            echo "<td>" .$campo->nombre ."</td>";
+                            echo "<td>".$campo->descripcion. "</td>";
+                            echo "<td>".$campo->fechainicio. "</td>";
+                            echo "<td>".$campo->fechafinal. "</td>";
+
+                            $CodiCurso=$campo->codigo;
+                            echo "<tr>";
+                            //Seguir editando
+                            echo "<td> <a href=DarAltaCursoUsu.php?CodigoCurso=$CodiCurso>Darme de alta</a></td>"; } 
+                        }
+                echo "</tr>";
+                echo"</table>";  
+            ?>
+    </div>

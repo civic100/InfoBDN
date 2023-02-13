@@ -95,9 +95,8 @@ class Profesor extends Database{
     public function insertar()
         {
             $sql = "INSERT INTO profesores (dni, nombre, apellido, titulacion, foto, activo) VALUES ('".$this->dni."','".$this->nombre."','".$this->apellido."','".$this->tituloacademico."','".$this->foto."')";
-            $this->db->query($sql);
-            //return $this;   
-            return $sql;
+            $rows = $this->db->query($sql);  
+            return $rows->fetchAll(PDO::FETCH_CLASS);
         }
 
     public function obtenerActivo(){
@@ -108,7 +107,20 @@ class Profesor extends Database{
 
     public  function activar(){
         $sql = "UPDATE profesores SET activo = '".$this->activo."' WHERE dni = '".$this->dni."'";
-        $this->db->query($sql);
+        $rows = $this->db->query($sql);
+        return $rows->fetchAll(PDO::FETCH_CLASS);
+    }
+      //Funcion para editar un producto
+      public function editar(){
+        $sql = "UPDATE profesores SET nombre = '".$this->nombre."', apellido = '".$this->apellido."', tituloacademico = '".$this->tituloacademico."'  WHERE dni = '".$this->dni."'";
+        $rows = $this->db->query($sql);
+        return $rows->fetchAll(PDO::FETCH_CLASS);
     }
 
+   //Funcion para editar imagen
+    public function editarImagen(){
+        $sql = "UPDATE profesores SET foto = '".$this->foto."' WHERE dni = '".$this->dni."'";
+        $rows = $this->db->query($sql);
+        return $rows->fetchAll(PDO::FETCH_CLASS);
+    }
 }

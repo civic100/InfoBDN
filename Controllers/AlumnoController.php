@@ -66,4 +66,11 @@
     public function registrar(){
         require_once "resources/views/alumno/registrar.php";
     }
+
+    public function home(){
+        require_once "models/curso.php";
+        $curso =  new Curso();
+        $lista = $curso->listadoCursos();
+        require_once "resources/views/alumno/home.php";
+    }
 }

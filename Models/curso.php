@@ -112,18 +112,16 @@ class Curso extends Database{
         }
         public function insertar()
         {
-            $sql = "INSERT INTO cursos (codigo, nombre, descripcion, horas, fechainicio, fechafinal, profesor, activo, foto) VALUES (NULL,'".$this->nombre."','".$this->descripcion."','".$this->horas."')";
-            $this->db->query($sql);
-            //return $this;   
-            return $sql;
+            $sql = "INSERT INTO cursos (`codigo`, `nombre`, `descripcion`, `horas`, `fechainicio`, `fechafinal`, `profesor`, `foto`) VALUES (NULL,'".$this->nombre."','".$this->descripcion."','".$this->horas."','".$this->fechainicio."','".$this->fechafinal."','".$this->profesor."','".$this->foto."')";
+            $rows = $this->db->query($sql);
+            return $rows->fetchAll(PDO::FETCH_CLASS);
         }
 
         public function eliminar()
         {
             $sql = "DELETE FROM cursos WHERE nombre = '".$this->nombre."'";
-            $this->db->query($sql);
-            //return $this;
-            return $sql;
+            $rows = $this->db->query($sql);
+            return $rows->fetchAll(PDO::FETCH_CLASS);
         }
 
         public function listadoCursos(){
@@ -141,23 +139,23 @@ class Curso extends Database{
         //Funcion para Activar/desactivar Curso
         public  function activar(){
             $sql = "UPDATE cursos SET activo = '".$this->activo."' WHERE codigo = '".$this->codigo."'";
-            $this->db->query($sql);
+            $rows = $this->db->query($sql);
+            return $rows->fetchAll(PDO::FETCH_CLASS);
         }
 
-    
         //Funcion para editar un producto
         public function editar(){
             $sql = "UPDATE cursos SET nombre = '".$this->nombre."', descripcion = '".$this->descripcion."', horas = '".$this->horas."', fechainicio =
             '".$this->fechainicio."', fechafinal = '".$this->fechafinal."', profesor ='".$this->profesor."' WHERE codigo = '".$this->codigo."'";
-            $this->db->query($sql);
-            //return $this;
+            $rows = $this->db->query($sql);
+            return $rows->fetchAll(PDO::FETCH_CLASS);
         }
 
-          //Funcion para editar imagen
-          public function editarImagen(){
+        //Funcion para editar imagen
+        public function editarImagen(){
             $sql = "UPDATE cursos SET foto = '".$this->foto."' WHERE codigo = '".$this->codigo."'";
-            $this->db->query($sql);
-            //return $this;
+            $rows = $this->db->query($sql);
+            return $rows->fetchAll(PDO::FETCH_CLASS);
         }
 
 }

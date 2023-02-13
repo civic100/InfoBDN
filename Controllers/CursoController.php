@@ -7,7 +7,7 @@
                 if(isset($_POST['nombre'])){
                     require_once "models/curso.php";
                     $curso = new Curso();
-                    if($curso->validar($_POST['codigo'])){
+                    if($curso->validar($_POST['nombre'])){
                         foreach($_POST as $clave => $valor){
                            $set = "set".$clave;
                            $curso->$set($valor);
@@ -26,8 +26,8 @@
                                 echo "<meta http-equiv=REFRESH content=2,URL=index.php?controller=Curso&action=registrar>";
                             }else{
                             
-                                if (move_uploaded_file($temp, "resources/views/css/assets/fotos/foto_".$_POST['codigo'].".jpg")) {
-                                    $curso->setFoto("resources/views/css/assets/fotos/foto_".$_POST['codigo'].".jpg");
+                                if (move_uploaded_file($temp, "resources/css/assets/fotos/foto_".$_POST['nombre'].".jpg")) {
+                                    $curso->setFoto("resources/css/assets/fotos/foto_".$_POST['nombre'].".jpg");
                                     $curso->insertar();
                                     $lista = $curso->listadoCursos();
                                     require_once "resources/views/curso/lista.php";
@@ -39,7 +39,7 @@
                             }
                         }
                     }else{
-                        echo "<script>alert('El codigo ".$_POST['codigo']." ya esta Registrado')</script>";
+                        echo "<script>alert('El codigo ".$_POST['nombre']." ya esta Registrado')</script>";
                         require_once "resources/views/curso/registro.php";
                     }
                 }else{
@@ -64,7 +64,7 @@
                 require_once "resources/views/curso/lista.php";
             }else{
                 ?>
-                <script>window.location.replace("index.php");</script>
+                    <script>window.location.replace("index.php");</script>
                 <?php
             }
             
@@ -126,11 +126,11 @@
                     require_once "models/curso.php";
                     echo "El Curso ".$_GET['codigo']." No existe";
                     $lista = $curso->listadoCursos();
-                    require_once "resources/views/producto/lista.php";
+                    require_once "resources/views/profesor/lista.php";
                 }
             }else{
                 ?>
-                <script>window.location.replace("index.php");</script>
+                    <script>window.location.replace("index.php");</script>
                 <?php
             }
         }
@@ -162,7 +162,7 @@
                                 $curso->setCodigo($_POST['codigo']);
                                 $curso->editarImagen();
                                 $lista = $curso->listadoCursos();
-                                require_once "resources/views/producto/lista.php";
+                                require_once "resources/views/curso/lista.php";
                             }else{
                                 //Si no se ha podido subir la imagen, mostramos un mensaje de error
                                 echo "<div><b>Ocurrió algún error al subir el fichero. No pudo guardarse.</b></div>";
@@ -174,15 +174,15 @@
 
                 }elseif(isset($_GET['codigo'])){
                     require_once "models/curso.php";
-                    $producto = new Curso();
-                    $producto ->setNombre($_GET['codigo']);
-                    $lista = $producto->listadoCursos();
+                    $curso = new Curso();
+                    $curso ->setNombre($_GET['codigo']);
+                    $lista = $curso->listadoCursos();
                     require_once "resources/views/curso/editarImagen.php";
                 }
                 else{
                     require_once "models/curso.php";
-                    $producto = new Curso();
-                    $lista = $producto->listadoCursos();
+                    $curso = new Curso();
+                    $lista = $curso->listadoCursos();
                     require_once "resources/views/curso/lista.php";
                 }
             }else{
