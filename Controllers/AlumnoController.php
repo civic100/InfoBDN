@@ -49,11 +49,10 @@
             $validar->setFoto($_POST["foto"]);
             $validar->setEmail($_POST["email"]);
             $validar->setContraseña($_POST["contraseña"]);
+
             if ( $validar->registrarAlumno()==1){
                 $_SESSION["Alumno"] = $_POST["nombre"];
-                ?>
-                <script>window.location.replace("index.php?controller=Alumno&action=login");</script>
-                <?php
+                ?><script>window.location.replace("index.php?controller=Alumno&action=login");</script><?php
             }else{
                 echo "<h1>Correo ya registrado</h1>";
                 require_once ("resources/views/alumno/registrar.php");

@@ -102,13 +102,12 @@ class Alumno extends Database{
        $rows = $this->db->query($sql);
        //Si no lo esta ejecutamos esta parte
        if ($rows->rowCount() == 0){
-               $sql1= "INSERT INTO alumnos (dni, nombre, apellido, edad, foto, email, contraseña) VALUES ('".$this->dni."','".$this->nombre."','".$this->apellido."','".$this->edad."','".$this->foto."','".$this->email."','".$this->contraseña."','1')";
+               $sql1= "INSERT INTO alumnos (dni, nombre, apellido, edad, foto, email, contraseña) 
+               VALUES ('".$this->dni."','".$this->nombre."','".$this->apellido."','".$this->edad."','".$this->foto."','".$this->email."','".$this->contraseña."','1')";
                $rows1 = $this->db->query($sql1);
                return  $rows1->rowCount();
        }
-       else{
-               return  $rows->rowCount();
-       }
+       else{return  $rows->rowCount();}
     }
 
     public function mostrarDatos(){
