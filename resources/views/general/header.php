@@ -1,38 +1,38 @@
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
-    <link href="//fonts.googleapis.com/css?family=Lobster:400" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-    <script src="views\css\assets\script.js"></script>
     <div >
       
         <?php
         if(isset($_SESSION["Alumno"])){
             ?>
             <div > 
-                <nav>
-                    <ul>
-                     <li class="usuarioLi"><a href="#" class="usuarioLink">
-                     </a>
-                        <ul>
-                            <li><a href="index.php?controller=Cliente&action=editarPerfil&correo=<?php echo $_SESSION["Alumno"]; ?>">Editar Perfil</a></li>
-                            <li><a href='index.php?controller=Base&action=salir'>Cerrar Sesion</a></li>
-                        </ul>
-                     </li>
-                    </ul>
-                </nav>
+                <div><p>Hola <?php echo $_SESSION["Alumno"]->nombre; ?></p></div>
+                <div><a href="index.php?controller=Alumno&action=editarPerfil&dni=<?php echo $_SESSION["Alumno"]->dni; ?>">Editar Perfil</a></div>
+                <div><a href="index.php?controller=Matricula&action=misCursos&dni=<?php echo $_SESSION["Alumno"]->dni; ?>">Mis cursos</a></div> 
+                <div><a href='index.php?controller=Base&action=salir'>Cerrar Sesion</a></div> 
             </div>
             <?php
+        }elseif(isset($_SESSION["Profesor"])){
+            ?>
+            <div > 
+                <div><p>Hola <?php echo $_SESSION["Profesor"]; ?></p>
+                <div><a href="index.php?controller=Profesor&action=editarPerfil&dni=<?php echo $_SESSION["Profesor"]->dni; ?>">Editar Perfil</a></div> 
+                <div><a href="index.php?controller=Profesor&action=misCursos&dni=<?php echo $_SESSION["Profesor"]->dni; ?>">Mis cursos</a></div> 
+                <div><a href='index.php?controller=Base&action=salir'>Cerrar Sesion</a></div>
+            </div>
+            <?php
+
         }else{
             ?>
+            <div>
                 <div> <a href='index.php?controller=Alumno&action=login'> Inicia Sesion</a> </div>
-                <div> <a href='index.php?controller=Curso&action=listado'>Todos los Cursos</a></div>
-                 <div> <a href='index.php?controller=Profesor&action=listado'>Todos los Profesores</a></div>
+                <div> <a href='index.php?controller=Base&action=listadoCursos'>Todos los Cursos</a></div>
+                <div> <a href='index.php?controller=Base&action=listadoProfesores'>Todos los Profesores</a></div>
+            <div>
             <?php
         }
         ?>
-
-      
-        
+       
+        <div> <a href='index.php'>Inicio</a></div>
+         
             
     </div>

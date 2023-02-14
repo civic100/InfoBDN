@@ -125,7 +125,7 @@ class Curso extends Database{
         }
 
         public function listadoCursos(){
-            $sql = "SELECT * FROM cursos";
+            $sql = "SELECT * FROM cursos where activo='1' ";
             $rows = $this->db->query($sql);
             return $rows->fetchAll(PDO::FETCH_CLASS);
         }
@@ -157,5 +157,7 @@ class Curso extends Database{
             $rows = $this->db->query($sql);
             return $rows->fetchAll(PDO::FETCH_CLASS);
         }
+
+        
 
 }

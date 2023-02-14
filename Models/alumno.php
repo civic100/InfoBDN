@@ -91,7 +91,7 @@ class Alumno extends Database{
     //login
     public function validarAlumno(){
         // Consulta
-        $sql = "SELECT * FROM alumnos where dni='".$this->dni."' ADN contraseña = '".$this->contraseña."'";
+        $sql = "SELECT * FROM alumnos where dni='".$this->dni."' and contraseña = '".$this->contraseña."'";
         $rows = $this->db->query($sql);
         return $rows->fetchAll(PDO::FETCH_CLASS);
     }
@@ -112,4 +112,16 @@ class Alumno extends Database{
        }
     }
 
+    public function mostrarDatos(){
+        $sql = "SELECT * FROM alumnos where dni= '".$_SESSION["Alumno"]->dni."'";
+        $rows = $this->db->query($sql);
+        return $rows->fetchAll(PDO::FETCH_CLASS);
+    }
+
+    public function editarPerfil(){
+        $sql = "UPDATE alumnos SET nombre='".$this->nombre."', apellido='".$this->apellido."', edad='".$this->edad."' where dni = '".$this->dni."'";
+        $rows = $this->db->query($sql);
+        return $rows->fetchAll(PDO::FETCH_CLASS);
+    }
+    
 }

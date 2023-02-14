@@ -7,12 +7,13 @@
             require_once("models/alumno.php"); 
             $validar=new Alumno();
             $validar->setDni($_POST["dni"]);
-            $validar->setContraseña($_POST["password"]);
+            $validar->setContraseña(md5($_POST["password"]));
             $validarRow = $validar->validarAlumno();
             $_SESSION["dni"] = $_POST["dni"];
             if (isset($validarRow[0]->nombre)){
                 //Una vez validado se genera la session del cliente
-                $_SESSION["Alumno"] =$validarRow[0]->nombre;
+                $_SESSION["Alumno"] = $validarRow[0];
+             
                 
                 if(isset($_SESSION["carrito"]) && (count($_SESSION["carrito"])>0 )){
                     header('Location:index.php?controller=Pedido&action=checkout');
@@ -42,7 +43,6 @@
             $validar->setContraseña($_POST["contraseña"]);
             if ( $validar->registrarAlumno()==1){
                 $_SESSION["Alumno"] = $_POST["nombre"];
-                $_SESSION["correoAlumno"] = $_POST["correo"];
                 ?>
                 <script>window.location.replace("index.php?controller=Alumno&action=login");</script>
                 <?php
@@ -57,6 +57,31 @@
             <?php
         }
     }
+
+    public function editarPerfil(){
+            if(isset($_SESSION['Alumno'])){
+             if(isset($_GET['dni'])){
+                 require_once "models/alumno.php";
+                 $alumno = new Alumno();
+                 $lista = $alumno->mostrarDatos();
+                 require_once "resources/views/alumno/editarPerfil.php";
+             }elseif(isset($_POST['dni'])){
+                 require_once "models/alumno.php";
+                 $alumno = new Alumno();
+                 foreach($_POST as $clave => $valor){
+                     $set = "set".$clave;
+                     $alumno->$set($valor);
+                  }
+                 $alumno->editarPerfil();
+                 $lista = $alumno->mostrarDatos();
+                 require_once "resources/views/alumno/editarPerfil.php";
+             }else{
+                 echo "El usuario no existe";
+                 require_once "resources/views/alumno/login.php";
+             }
+            }
+         }
+
     public function login(){
         require_once "resources/views/alumno/login.php";
     }
