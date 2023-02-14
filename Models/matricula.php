@@ -49,4 +49,21 @@ class Matricula extends Database{
         $rows = $this->db->query($sql);
         return $rows->fetchAll(PDO::FETCH_CLASS);
     }
+    public function listadoMisCursosNotas(){
+        $sql = "SELECT * FROM matricula WHERE curso = '".$this->curso."' AND activo='1' " ;
+        $rows = $this->db->query($sql);
+        return $rows->fetchAll(PDO::FETCH_CLASS);    
+    }
+
+    public function ponerNota(){
+        $sql="UPDATE `matricula` SET `nota`='".$this->nota."' WHERE curso = '".$this->curso."' AND dni_alumno = '".$this->dni_alumno."'";
+        $rows = $this->db->query($sql);
+        return $rows->fetchAll(PDO::FETCH_CLASS);
+    }
+
+    public function matricula(){
+        $sql="SELECT * FROM `matricula`  WHERE curso = '".$this->curso."' AND dni_alumno = '".$this->dni_alumno."'";
+        $rows = $this->db->query($sql);
+        return $rows->fetchAll(PDO::FETCH_CLASS);
+    }
 }

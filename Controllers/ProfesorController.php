@@ -2,8 +2,8 @@
 
     class ProfesorController{
 
-        public function registrar(){
-            if(isset($_SESSION['Administrador'])){
+       /*  public function registrar(){
+            if(isset($_SESSION['Profesor'])){
                 if(isset($_POST['dni'])){
                     require_once "models/profesor.php";
                     $curso = new Profesor();
@@ -54,7 +54,7 @@
             }
         }
         public function listado(){
-            if(isset($_SESSION['Administrador'])){
+            if(isset($_SESSION['Profesor'])){
                 require_once "models/profesor.php";
                 $producto = new Profesor();
                 $lista = $producto->profesores();
@@ -68,7 +68,7 @@
 
         //Funcion para editar el Curso
         public function editar(){
-            if(isset($_SESSION['Administrador'])){
+            if(isset($_SESSION['Profesor'])){
                 if(isset($_GET['dni'])){
                     require_once "models/profesor.php";
                     $profesor = New Profesor();
@@ -180,7 +180,7 @@
                 <script>window.location.replace("index.php");</script>
                 <?php
             }
-        }
+        } */
         
         public function editarPerfil(){
             if(isset($_SESSION['Profesor'])){
@@ -224,5 +224,45 @@
                     <script>window.location.replace("index.php");</script>
                 <?php
             }
+        }
+
+        public function evaluarNota(){
+            if(isset($_SESSION['Profesor'])){
+                require_once "models/matricula.php";
+                $nota = new Matricula();
+                $nota->setCurso($_GET['codigo']);
+                $lista = $nota->listadoMisCursosNotas();
+                require_once "resources/views/profesor/notaCursos.php";
+            }else{
+                ?>
+                    <script>window.location.replace("index.php");</script>
+                <?php
+            }
+        }
+
+        public function ponerNota(){
+            if(isset($_SESSION['Profesor'])){
+                if (isset($_POST["nota"])) {
+                    require_once("models/matricula.php"); 
+                    $validar=new Matricula();
+                    $validar->setNota($_POST["nota"]);
+                    $validar->setDni_alumno($_POST["dni_alumno"]);
+                    $validar->setCurso($_POST["curso"]);
+                    $validarRow = $validar->ponerNota();
+                    require_once "resources/views/profesor/home.php";
+                }else{
+                    require_once("models/matricula.php"); 
+                    $validar=new Matricula();
+                    $validar->setCurso($_GET["curso"]);
+                    $validar->setDni_alumno($_GET["dni"]);
+                    $lista = $validar->matricula();
+                    require_once "resources/views/profesor/ponerNota.php";
+                }
+            }else{
+                ?>
+                    <script>window.location.replace("index.php");</script>
+                <?php
+            }
+
         }
 }
