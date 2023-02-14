@@ -181,7 +181,48 @@
                 <?php
             }
         }
+        
+        public function editarPerfil(){
+            if(isset($_SESSION['Profesor'])){
+                if(isset($_GET['dni'])){
+                     require_once "models/profesor.php";
+                     $profesor = new Profesor();
+                     $lista = $profesor->mostrarDatos();
+                     require_once "resources/views/profesor/editarPerfil.php";
+                 }elseif(isset($_POST['dni'])){
+                     require_once "models/profesor.php";
+                     $profesor = new Profesor();
+                     foreach($_POST as $clave => $valor){
+                         $set = "set".$clave;
+                         $profesor->$set($valor);
+                      }
+                     $profesor->editarPerfil();
+                     $lista = $profesor->mostrarDatos();
+                     require_once "resources/views/profesor/editarPerfil.php";
+                 }else{
+                     echo "El usuario no existe";
+                     require_once "resources/views/alumno/login.php";
+                 }
+            }else {
+                ?>
+                <script>window.location.replace("index.php");</script>
+                <?php
+            }
+        }
 
+        public function evaluarMisCursos(){
+            if(isset($_SESSION['Profesor'])){
+                require_once "models/curso.php";
+                $producto = new Curso();
+                $producto->setProfesor($_SESSION['Profesor']->dni);
+                $lista = $producto->listadoMisCursos();
 
+                require_once "resources/views/profesor/evaluarMisCursos.php";
 
-    }
+            }else{
+                ?>
+                    <script>window.location.replace("index.php");</script>
+                <?php
+            }
+        }
+}

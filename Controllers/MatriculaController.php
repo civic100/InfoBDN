@@ -25,6 +25,9 @@
                 $listaMisCursos=$matricula->altaCurso();
                 
                 require_once "resources/views/alumno/misCursos.php";
+            }else{
+                
+                require_once "resources/views/alumno/login.php";
             }
          }
     }

@@ -123,4 +123,24 @@ class Profesor extends Database{
         $rows = $this->db->query($sql);
         return $rows->fetchAll(PDO::FETCH_CLASS);
     }
+
+    public function validarProfesor(){
+        $sql = "SELECT * FROM profesores where dni='".$this->dni."' and contraseña = '".$this->contraseña."'";
+        $rows = $this->db->query($sql);
+        return $rows->fetchAll(PDO::FETCH_CLASS);
+    }
+
+    public function mostrarDatos(){
+        $sql = "SELECT * FROM profesores where dni= '".$_SESSION["Profesor"]->dni."'";
+        $rows = $this->db->query($sql);
+        return $rows->fetchAll(PDO::FETCH_CLASS);
+    }
+
+    public function editarPerfil(){
+        $sql = "UPDATE profesores SET nombre='".$this->nombre."', apellido='".$this->apellido."', tituloacademico='".$this->tituloacademico."' where dni = '".$this->dni."'";
+        $rows = $this->db->query($sql);
+        return $rows->fetchAll(PDO::FETCH_CLASS);
+    }
+    
+    
 }

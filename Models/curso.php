@@ -129,6 +129,11 @@ class Curso extends Database{
             $rows = $this->db->query($sql);
             return $rows->fetchAll(PDO::FETCH_CLASS);
         }
+        public function listadoMisCursos(){
+            $sql = "SELECT * FROM cursos where activo='1'  and profesor='".$this->profesor."'";
+            $rows = $this->db->query($sql);
+            return $rows->fetchAll(PDO::FETCH_CLASS);
+        }
           //Funcion para saber si el producto esta activado o descativado
         public function obtenerActivo(){
             $sql = "SELECT activo FROM cursos WHERE codigo = '".$this->codigo."'";

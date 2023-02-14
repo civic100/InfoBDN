@@ -13,15 +13,23 @@
             if (isset($validarRow[0]->nombre)){
                 //Una vez validado se genera la session del cliente
                 $_SESSION["Alumno"] = $validarRow[0];
-             
+                header('Location:index.php?controller=Alumno&action=home');
+               
                 
-                if(isset($_SESSION["carrito"]) && (count($_SESSION["carrito"])>0 )){
-                    header('Location:index.php?controller=Pedido&action=checkout');
-                }else{
-                    header('Location:index.php?controller=Alumno&action=home');
-                }
             }else{
-                require_once ("resources/views/alumno/login.php?&val1 = '1'");
+                require_once("models/profesor.php"); 
+                $validar=new Profesor();
+                $validar->setDni($_POST["dni"]);
+                $validar->setContraseña(md5($_POST["password"]));
+                $validarRow = $validar->validarProfesor();
+                $_SESSION["dni"] = $_POST["dni"];
+                if (isset($validarRow[0]->nombre)){
+                    $_SESSION["Profesor"] = $validarRow[0];
+                    header('Location:index.php?controller=Alumno&action=home');
+
+                }else{
+                    require_once ("resources/views/alumno/login.php");
+                }
             }
         } else {
             ?>
@@ -59,8 +67,8 @@
     }
 
     public function editarPerfil(){
-            if(isset($_SESSION['Alumno'])){
-             if(isset($_GET['dni'])){
+        if(isset($_SESSION['Alumno'])){
+            if(isset($_GET['dni'])){
                  require_once "models/alumno.php";
                  $alumno = new Alumno();
                  $lista = $alumno->mostrarDatos();
@@ -79,8 +87,12 @@
                  echo "El usuario no existe";
                  require_once "resources/views/alumno/login.php";
              }
-            }
-         }
+        }else {
+            ?>
+            <script>window.location.replace("index.php");</script>
+            <?php
+        }
+    }
 
     public function login(){
         require_once "resources/views/alumno/login.php";
@@ -92,7 +104,9 @@
         require_once "models/curso.php";
         $curso =  new Curso();
         $lista = $curso->listadoCursos();
-        require_once "resources/views/alumno/home.php";
+        if(isset($_SESSION['Alumno'])){require_once "resources/views/alumno/home.php"; }
+        if(isset($_SESSION['Profesor'])){ require_once "resources/views/profesor/home.php"; }
+        else{require_once "resources/views/alumno/home.php";}
     }
     public function Menu(){
         require_once "resources/views/general/header.php";

@@ -14,9 +14,9 @@
         }elseif(isset($_SESSION["Profesor"])){
             ?>
             <div > 
-                <div><p>Hola <?php echo $_SESSION["Profesor"]; ?></p>
+                <div><p>Hola <?php echo $_SESSION["Profesor"]->nombre; ?></p>
                 <div><a href="index.php?controller=Profesor&action=editarPerfil&dni=<?php echo $_SESSION["Profesor"]->dni; ?>">Editar Perfil</a></div> 
-                <div><a href="index.php?controller=Profesor&action=misCursos&dni=<?php echo $_SESSION["Profesor"]->dni; ?>">Mis cursos</a></div> 
+                <div><a href="index.php?controller=Profesor&action=evaluarMisCursos&dni=<?php echo $_SESSION["Profesor"]->dni; ?>">Evaluar mis cursos</a></div> 
                 <div><a href='index.php?controller=Base&action=salir'>Cerrar Sesion</a></div>
             </div>
             <?php
